@@ -123,4 +123,4 @@ source "$HOME/.cargo/env"
 # Run neofetch
 neofetch
 
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

@@ -52,12 +52,12 @@ if [ $# -eq 1 -a "$valid_input" = true ]
 then
 
 	clear
-	neofetch --ascii ~/.config/neofetch/colored_pop.txt --ascii_colors 7 15
+	neofetch
 	echo -e "\033[1;33mCurrently Playing: \c\033[0m"
 	echo -e "\033[0;35m$name\033[0m"
 	mpv --no-video --msg-level=ffmpeg=no,ffmpeg/demuxer=no,lavf=no $channel 
 	clear
-	neofetch --ascii ~/.config/neofetch/colored_pop.txt --ascii_colors 7 15
+	neofetch
 else
 	help
 fi

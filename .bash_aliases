@@ -9,3 +9,6 @@ alias neofetch="clear && neofetch"
 
 # Git dotfiles command
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Alias for playing music with mpv
+alias music='$HOME/bin/music.sh '

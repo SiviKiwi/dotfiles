@@ -18,7 +18,7 @@ local terminal = RC.vars.terminal
 
 -- Variable definitions
 -- This is used later as the default terminal and editor to run.
-local editor = os.getenv("EDITOR") or "nano"
+local editor = os.getenv("EDITOR") or "nvim"
 local editor_cmd = terminal .. " -e " .. editor
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -27,7 +27,6 @@ M.awesome = {
   { "hotkeys", function()
       hotkeys_popup.show_help(nil, awful.screen.focused())
     end },
-  { "manual", terminal .. " -e man awesome" },
   { "edit config", editor_cmd .. " " .. awesome.conffile },
   { "Terminal", terminal },
   { "Shutdown/Logout", "oblogout" },
@@ -43,8 +42,6 @@ function _M.get()
   local menu_items = {
     { "awesome", M.awesome, beautiful.awesome_subicon },
     { "open terminal", terminal },
-    { "network", M.network_main },
-    { "favorite", M.favorite }
   }
 
   return menu_items

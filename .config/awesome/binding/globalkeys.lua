@@ -76,7 +76,9 @@ function _M.get()
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
     awful.key({modkey,		  }, "b", function () awful.spawn("firefox") end,
-    	      {description = "Launch firefox", group = "launcher"}),
+    	      {description = "launch firefox", group = "launcher"}),
+    awful.key({modkey,		  }, "f", function () awful.spawn("freetube") end,
+    	      {description = "launch freetube", group = "launcher"}),
 
 
     --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --

@@ -100,6 +100,5 @@ awful.rules.rules = main.rules(
 require("main.signals")
 -- }}}
 
--- Autostart
-awful.spawn.with_shell("picom")
-awful.spawn.with_shell("nitrogen --restore")
+-- autostart programs
+require("main.autostart")

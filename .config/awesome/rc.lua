@@ -12,6 +12,9 @@ local beautiful = require("beautiful")
 -- Miscellanous awesome library
 local menubar = require("menubar")
 
+-- Enable autofocus
+require("main.autofocus")
+
 RC = {} -- global namespace, on top before require any modules
 RC.vars = require("main.user-variables")
 

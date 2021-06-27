@@ -12,3 +12,6 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Alias for playing music with mpv
 alias music='$HOME/bin/music.sh '
+
+# Alias for downloading video and playing with mpv
+alias downplay='$HOME/bin/downplay.sh '

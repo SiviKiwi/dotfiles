@@ -1,5 +1,5 @@
 #Run radio script
-alias radio='$HOME/bin/radio.sh'
+alias radio='$HOME/.bin/radio.sh'
 
 #Add autocompletion for radio
 complete -W "--lain --darksynth --thanatos --lofi --va11hall-a --50s -la -d -t -lo -v -5" radio
@@ -11,7 +11,7 @@ alias neofetch="clear && neofetch"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Alias for playing music with mpv
-alias music='$HOME/bin/music.sh '
+alias music='$HOME/.bin/music.sh '
 
 # Alias for downloading video and playing with mpv
-alias downplay='$HOME/bin/downplay.sh '
+alias downplay='$HOME/.bin/downplay.sh '

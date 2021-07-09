@@ -6,6 +6,11 @@ from groups import groups
 BROWSER = 'firefox'
 TERM = 'alacritty'
 
+def next_layout():
+    lazy.next_layout()
+    if lazy.layout.name == 'monadtallborderless':
+        lazy.next_layout()
+
 mod = 'mod4'
 keys = [
     # Switch between windows
@@ -13,27 +18,24 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.screen.next_group()),
 
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
+    Key([mod, "shift"], "h", lazy.layout.swap_left(),
         desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(),
+    Key([mod, "shift"], "l", lazy.layout.swap_right(),
         desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(),
         desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+    Key([mod], "space", lazy.layout.flip()),
 
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow_left(),
+    Key([mod, "control"], "k", lazy.layout.grow(),
         desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(),
+    Key([mod, "control"], "j", lazy.layout.shrink(),
         desc="Grow window to the right"),
-    Key([mod, "control"], "j", lazy.layout.grow_down(),
-        desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
     # Toggle between split and unsplit sides of stack.
@@ -44,7 +46,7 @@ keys = [
         desc="Toggle between split and unsplit sides of stack"),
 
     # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod], "Tab", lazy.next_screen(), desc="Toggle between screens"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),

@@ -12,7 +12,7 @@ from screens import screens
 
 
 layouts = [
-        layout.MonadTall(),
+        layout.MonadTall(border_width=1),
         #layout.Columns(border_focus_stack='#d75f5f'),
 
 
@@ -54,6 +54,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='ssh-askpass'),  # ssh-askpass
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
+    Match(title='Picture in picture'), # Floating freetube window
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"

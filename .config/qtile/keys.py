@@ -2,9 +2,11 @@ from libqtile.config import Key
 from libqtile.lazy import lazy
 
 from groups import groups
+from uservariables import uservariables
 
-BROWSER = 'firefox'
-TERM = 'alacritty'
+BROWSER = uservariables.BROWSER
+TERM = uservariables.TERM
+EDITOR = uservariables.EDITOR
 
 def next_layout():
     lazy.next_layout()
@@ -45,10 +47,12 @@ keys = [
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"),
 
-    # Toggle between different layouts as defined below
+    # Toggle between different screens
     Key([mod], "Tab", lazy.next_screen(), desc="Toggle between screens"),
+    # Kill the focused window
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
 
+    # Qtile commands
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(),

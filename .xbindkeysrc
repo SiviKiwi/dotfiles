@@ -68,16 +68,19 @@
 
 # Increase volume
 "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ +5%"
-   XF86AudioRaiseVolume
+    Mod4+Prior
+#   XF86AudioRaiseVolume
 
 
 # Decrease volume 
 "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ -5%"
-   XF86AudioLowerVolume
+    Mod4+Next
+#   XF86AudioLowerVolume
 
 # Mute volume
 "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-   XF86AudioMute
+    Mod4+Delete
+#   XF86AudioMute
 
 
 ##################################

@@ -17,13 +17,15 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
 " Neomake build tool (mapped below to <c-b>)
 " Plugin 'benekastah/neomake'
+
 " Autocomplete for python
-" Plugin 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'
+
+Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+
 " Remove extraneous whitespace when edit mode is exited
 Plugin 'thirtythreeforty/lessspace.vim'
-
-" Screen splitter.  Cool, but doesn't work with nvim.
-"Plugin 'ervandew/screen'
 
 " LaTeX editing
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
@@ -32,14 +34,6 @@ Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 
-" Tab completion
-Plugin 'ervandew/supertab'
-
-" Vim wiki
-Plugin 'vimwiki/vimwiki'
-
-" List vim
-Plugin 'lervag/lists.vim'
 
 " After all plugins...
 call vundle#end()
@@ -47,7 +41,7 @@ call vundle#end()
 
 """"""" Jedi-VIM """""""
 " Don't mess up undo history
-" let g:jedi#show_call_signatures = "0"
+let g:jedi#show_call_signatures = "0"
 
 
 """"""" SuperTab configuration """""""
@@ -87,7 +81,7 @@ let g:gitgutter_max_signs=10000
 set number showmatch
 set shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent
 let python_highlight_all = 1
-
+let g:deoplete#enable_at_startup = 1
 
 """"""" Keybindings """""""
 " Set up leaders

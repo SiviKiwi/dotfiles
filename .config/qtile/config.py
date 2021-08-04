@@ -8,6 +8,7 @@ from libqtile.lazy import lazy
 from keys import keys
 from groups import groups
 from screens import screens
+from startup import startup
 
 
 
@@ -29,7 +30,7 @@ extension_defaults = widget_defaults.copy()
 
 @hook.subscribe.startup
 def autostart():
-    os.system('nitrogen --restore')
+    startup()
 
 @hook.subscribe.client_focus
 def client_focus(w):

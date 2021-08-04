@@ -1,0 +1,33 @@
+[
+    {
+        "name":"Lain Cyberia",
+        "alias":"la",
+        "url":"https://lainon.life/radio/cyberia.ogg"
+    },
+    {
+        "name":"Darksynth Radio",
+        "alias":"d",
+        "url":"https://stream.nightride.fm/darksynth.m4a"
+    },
+    {
+        "name":"Thanatos Retrowave",
+        "alias":"t",
+        "url":"https://www.youtube.com/channel/UCmYTgpKxd-QOJCPDrmaXuqQ/live "
+    },
+    {
+        "name":"Lofi Hip Hop beats to relax/study",
+        "alias":"lo",
+        "url":"https://www.youtube.com/channel/UCSJ4gkVC6NrvII8umztf0Ow/live"
+    },
+    {
+        "name":"Va11 Hall-A Radio",
+        "alias":"v",
+        "url":"https://www.youtube.com/playlist?list=PLQuOY1HVtJ__GGoVvMXuT9ezBouejgvTq"
+    },
+    {
+        "name":"50s Radio",
+        "alias":"5",
+        "url":"http://0n-50s.radionetz.de/0n-50s.mp3"
+    }
+]
+

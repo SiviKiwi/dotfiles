@@ -4,7 +4,7 @@ import json
 from colorama import init
 from termcolor import colored
 
-CONF = '.config/radio.json'
+CONF = '/home/sivert/.bin/.config/radio.json'
 
 init()
 

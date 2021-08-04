@@ -1,3 +1,3 @@
 #! /bin/bash
 
-python radio.py
+python /home/sivert/.bin/radio.py

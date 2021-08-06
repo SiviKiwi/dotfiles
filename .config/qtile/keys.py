@@ -62,6 +62,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(TERM), desc="Launch terminal"),
     Key([mod], "b", lazy.spawn(BROWSER), desc="Launch web browser"),
     Key([mod], "f", lazy.spawn("freetube"), desc="Launch Freetube"),
+    Key([mod], "s", lazy.spawn("steam"), desc="Launch Steam"),
 ]
 
 for i in groups:

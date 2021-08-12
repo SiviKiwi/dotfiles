@@ -1,7 +1,7 @@
 youtube-dl -f "mp4" -o "tempvid" $1
 
-mpv tempvid.mp4
+mpv tempvid
 
-rm tempvid.mp4
+rm tempvid
 
 clear

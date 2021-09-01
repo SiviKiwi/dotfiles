@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 from libqtile import layout, hook
 from libqtile.config import Group, Match
@@ -30,7 +31,7 @@ extension_defaults = widget_defaults.copy()
 
 @hook.subscribe.startup
 def autostart():
-    startup()
+    subprocess.call('/home/sivert/.config/qtile/startup.sh')
 
 @hook.subscribe.client_focus
 def client_focus(w):

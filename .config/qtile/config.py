@@ -9,7 +9,6 @@ from libqtile.lazy import lazy
 from keys import keys
 from groups import groups
 from screens import screens
-from startup import startup
 
 
 

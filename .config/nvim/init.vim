@@ -28,7 +28,7 @@ Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plugin 'thirtythreeforty/lessspace.vim'
 
 " LaTeX editing
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'skywind3000/asyncrun.vim'
 
 " Status bar mods
 Plugin 'bling/vim-airline'

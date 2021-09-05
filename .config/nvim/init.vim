@@ -88,6 +88,11 @@ let g:deoplete#enable_at_startup = 1
 let mapleader=","
 let maplocalleader="\\"
 
+" Start Async latexmk
+nnoremap <Leader><space> :AsyncRun latexmk -pvc -pdf %<CR>
+
+
+
 " Arrow keys up/down move visually up and down rather than by whole lines.  In
 " other words, wrapped lines will take longer to scroll through, but better
 " control in long bodies of text.

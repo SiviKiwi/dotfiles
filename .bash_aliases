@@ -15,3 +15,6 @@ alias music='$HOME/.bin/music.sh '
 
 # Alias for downloading video and playing with mpv
 alias downplay='$HOME/.bin/downplay.sh '
+
+# Alias for tlmgr perl script location
+alias tlmgr='$TEXMFDIST/scripts/texlive/tlmgr.pl --usermode'

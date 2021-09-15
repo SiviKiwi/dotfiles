@@ -120,5 +120,8 @@ fi
 export PATH="~/.emacs.d/bin:$PATH"
 source "$HOME/.cargo/env"
 
+# Ad enviroment variable for tlmgr
+export TEXMFDIST=/usr/share/texmf-dist
+
 # Run neofetch
 neofetch

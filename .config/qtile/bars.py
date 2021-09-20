@@ -1,4 +1,5 @@
 from libqtile import bar, widget
+from datetime import date
 
 main_bar = bar.Bar(
         [
@@ -19,4 +20,5 @@ main_bar = bar.Bar(
                 ),
             widget.Systray(),
             widget.Clock(format='%d-%m-%Y %a %H:%M'),
+            widget.TextBox(f'Week {date.today().isocalendar()[1]}')
         ], 24)

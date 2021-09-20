@@ -117,6 +117,11 @@ if ! shopt -oq posix; then
 fi
 
 
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+
 export PATH="~/.emacs.d/bin:$PATH"
 source "$HOME/.cargo/env"
 

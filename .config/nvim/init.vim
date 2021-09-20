@@ -82,6 +82,9 @@ set number showmatch
 set shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent
 let python_highlight_all = 1
 let g:deoplete#enable_at_startup = 1
+" run python with shortcut
+autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
 """"""" Keybindings """""""
 " Set up leaders

@@ -19,7 +19,5 @@ main_bar = bar.Bar(
                 execute='alacritty -e sudo pacman -Syu'
                 ),
             widget.Systray(),
-            widget.Clock(format='%a %d-%m-%Y'),
-            widget.TextBox(f'Week {date.today().isocalendar()[1]}'),
-            widget.Clock(format='%H:%M'),
+            widget.Clock(format=f'%a %d-%m-%Y | Week {date.today().isocalendar()[1]} | %H:%M'),
         ], 24)

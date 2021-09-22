@@ -92,7 +92,7 @@ let mapleader=","
 let maplocalleader="\\"
 
 " Start Async latexmk
-nnoremap <Leader><space> :AsyncRun latexmk -pvc -pdf %<CR>
+autocmd FileType tex map <buffer> <leader><space> :w<CR>:AsyncRun latexmk -pvc -pdf %<CR>
 
 
 

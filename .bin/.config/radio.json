@@ -25,6 +25,11 @@
         "url":"https://www.youtube.com/playlist?list=PLQuOY1HVtJ__GGoVvMXuT9ezBouejgvTq"
     },
     {
+        "name":"Faster than Light Radio",
+        "alias":"ft",
+        "url":"https://youtube.com/playlist?list=PL1bOcJQFjlBQg-AUmY4LOY_y5L7cIgczy"
+    },
+    {
         "name":"50s Radio",
         "alias":"50",
         "url":"http://0n-50s.radionetz.de/0n-50s.mp3"

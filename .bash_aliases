@@ -15,3 +15,6 @@ alias downplay='$HOME/.bin/downplay.sh '
 
 # Alias for tlmgr perl script location
 alias tlmgr='$TEXMFDIST/scripts/texlive/tlmgr.pl --usermode'
+
+# Alias for opening mpv and chatterino for twitch channel
+alias twitch='$HOME/.bin/twitch.sh '

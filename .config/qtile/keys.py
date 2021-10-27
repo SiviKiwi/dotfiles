@@ -9,11 +9,6 @@ BROWSER = uservariables.BROWSER
 TERM = uservariables.TERM
 EDITOR = uservariables.EDITOR
 
-def next_layout():
-    lazy.next_layout()
-    if lazy.layout.name == 'monadtallborderless':
-        lazy.next_layout()
-
 def unfloat(q):
     windows = q.current_group.windows
     logger.warning(type(windows[0]))

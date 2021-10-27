@@ -15,6 +15,7 @@ from screens import screens
 layouts = [
         layout.MonadTall(border_width=1),
         #layout.Columns(border_focus_stack='#d75f5f'),
+        layout.Floating(),
 
 
         # Layout for when there is only a single window
@@ -28,16 +29,17 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-@hook.subscribe.startup
+@hook.subscribe.startup_once
 def autostart():
     subprocess.call('/home/sivert/.config/qtile/startup.sh')
 
 @hook.subscribe.client_focus
 def client_focus(w):
-    if len(w.group.info()['windows']) == 1 and w.group.layout.info()['name'] != 'monadtallborderless':
-        w.group.use_layout(-1)
-    elif len(w.group.info()['windows']) != 1 and w.group.layout.info()['name'] != 'monadtall':
-        w.group.use_layout(0)
+    if w.group.info()['name'] != '9':
+        if len(w.group.info()['windows']) == 1 and w.group.layout.info()['name'] != 'monadtallborderless':
+            w.group.use_layout(-1)
+        elif len(w.group.info()['windows']) != 1 and w.group.layout.info()['name'] != 'monadtall':
+            w.group.use_layout(0)
 
 
 dgroups_key_binder = None

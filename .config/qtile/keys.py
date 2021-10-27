@@ -1,5 +1,6 @@
 from libqtile.config import Key
 from libqtile.lazy import lazy
+from libqtile.log_utils import logger
 
 from groups import groups
 from uservariables import uservariables
@@ -12,6 +13,12 @@ def next_layout():
     lazy.next_layout()
     if lazy.layout.name == 'monadtallborderless':
         lazy.next_layout()
+
+def unfloat(q):
+    windows = q.current_group.windows
+    logger.warning(type(windows[0]))
+    for window in windows:
+        window.floating = False
 
 mod = 'mod4'
 keys = [
@@ -39,6 +46,7 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.shrink(),
         desc="Grow window to the right"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key([mod], "u", lazy.function(unfloat), desc="Unfloat window"),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed

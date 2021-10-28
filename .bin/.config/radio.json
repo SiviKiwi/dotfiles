@@ -28,6 +28,11 @@
         "name":"Faster than Light Radio",
         "alias":"ft",
         "url":"https://youtube.com/playlist?list=PL1bOcJQFjlBQg-AUmY4LOY_y5L7cIgczy"
+    },
+    {
+        "name":"Minecraft",
+        "alias":"mc",
+        "url":"https://youtube.com/playlist?list=PLefKpFQ8Pvy5aCLAGHD8Zmzsdljos-t2l"
     }
 ]
 

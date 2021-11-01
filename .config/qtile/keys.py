@@ -10,10 +10,17 @@ TERM = uservariables.TERM
 EDITOR = uservariables.EDITOR
 
 def unfloat(q):
-    windows = q.current_group.windows
-    logger.warning(type(windows[0]))
+    windows = q.current_group.windows.copy()
     for window in windows:
         window.floating = False
+
+
+def move_all(q, i):
+    windows = q.current_group.windows.copy()
+    for window in windows:
+        window.togroup(i.name, switch_group=False)
+    q.groups[int(i.name) - 1].cmd_toscreen()
+
 
 mod = 'mod4'
 keys = [
@@ -74,11 +81,12 @@ for i in groups:
         Key([mod], i.name, lazy.group[i.name].toscreen(),
             desc="Switch to group {}".format(i.name)),
 
+        # mod1 + ctrl + shift + letter of group = switch to & move ALL windows to group
+        Key([mod, "control", "shift"], i.name, lazy.function(move_all, i),
+            desc="Switch to & move all windows to group {}".format(i.name)),
+
         # mod1 + shift + letter of group = switch to & move focused window to group
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
             desc="Switch to & move focused window to group {}".format(i.name)),
-        # Or, use below if you prefer not to switch to that group.
-        # # mod1 + shift + letter of group = move focused window to group
-        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-        #     desc="move focused window to group {}".format(i.name)),
+
     ])

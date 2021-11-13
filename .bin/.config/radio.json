@@ -33,6 +33,11 @@
         "name":"Minecraft",
         "alias":"mc",
         "url":"https://youtube.com/playlist?list=PLefKpFQ8Pvy5aCLAGHD8Zmzsdljos-t2l"
+    },
+    {
+        "name":"Cowboy Bebop",
+        "alias":"cb",
+        "url":"https://youtube.com/playlist?list=PLEqqgD-xgjpLAzxAu8Wz9PLSQEFQ_o5Pl"
     }
 ]
 

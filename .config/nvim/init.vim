@@ -47,6 +47,9 @@ call vundle#end()
 " Don't mess up undo history
 let g:jedi#show_call_signatures = "0"
 
+""""""" Arduino """""""
+let g:arduino_dir = '/usr/share/arduino'
+let g:arduino_cmd = '/usr/local/bin/arduino'
 
 """"""" SuperTab configuration """""""
 "let g:SuperTabDefaultCompletionType = "<c-x><c-u>"

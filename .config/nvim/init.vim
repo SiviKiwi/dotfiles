@@ -34,6 +34,10 @@ Plugin 'skywind3000/asyncrun.vim'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 
+" Arduino Highlights
+Plugin 'sudar/vim-arduino-syntax'
+Plugin 'stevearc/vim-arduino'
+
 
 " After all plugins...
 call vundle#end()

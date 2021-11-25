@@ -46,6 +46,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
     Match(title='Picture in picture'), # Floating freetube window
+    Match(wm_class='battle.net.exe'),
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"

@@ -121,11 +121,14 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# Set editor variable
+export EDITOR="/usr/bin/nvim"
+
 
 export PATH="~/.emacs.d/bin:$PATH"
 source "$HOME/.cargo/env"
 
-# Ad enviroment variable for tlmgr
+# Add enviroment variable for tlmgr
 export TEXMFDIST=/usr/share/texmf-dist
 
 # Run neofetch

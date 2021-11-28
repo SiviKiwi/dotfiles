@@ -4,8 +4,6 @@
 
 clear
 
-neofetch
-
 # Get video title
 title=`youtube-dl --no-warnings --skip-download -e $1`
 

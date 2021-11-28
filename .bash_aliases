@@ -18,3 +18,6 @@ alias tlmgr='$TEXMFDIST/scripts/texlive/tlmgr.pl --usermode'
 
 # Alias for opening mpv and chatterino for twitch channel
 alias twitch='$HOME/.bin/twitch.sh '
+
+# Alias for taking a sceenshot with gscreenshot
+alias screenshot='gscreenshot -sf $HOME/Bilete/$(date +"%Y-%m-%d_%T.png") '

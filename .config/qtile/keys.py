@@ -8,7 +8,7 @@ from uservariables import uservariables
 BROWSER = uservariables.BROWSER
 TERM = uservariables.TERM
 EDITOR = uservariables.EDITOR
-ALIASES = uservariables.ALIASES
+#ALIASES = uservariables.ALIASES
 
 def unfloat(q):
     windows = q.current_group.windows.copy()
@@ -66,7 +66,7 @@ keys = [
     # Qtile commands
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(aliases=ALIASES),
+    Key([mod], "r", lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"),
 
     # Program shortcuts

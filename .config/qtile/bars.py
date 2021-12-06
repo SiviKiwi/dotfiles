@@ -5,6 +5,7 @@ from uservariables import uservariables
 
 foreground = uservariables.PINK
 border = uservariables.TEAL
+font = uservariables.FONT
 
 main_bar = bar.Bar(
         [
@@ -17,10 +18,12 @@ main_bar = bar.Bar(
                 foreground=foreground,
                 active=foreground,
                 inactive=foreground,
+                font=font,
                 ),
 
             widget.Prompt(
                 foreground=foreground,
+                font=font,
                 ),
             #widget.WindowName(),
             widget.Spacer(
@@ -28,9 +31,11 @@ main_bar = bar.Bar(
                 ),
             widget.PulseVolume(
                 foreground=foreground,
+                font=font,
                 ),
             widget.Clock(
                 format=f'| %a %d-%m-%Y | Week {date.today().isocalendar()[1]} | %H:%M',
                 foreground=foreground,
+                font=font,
                 ),
             ], 24, opacity=1)

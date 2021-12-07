@@ -3,9 +3,13 @@ from datetime import date
 
 from uservariables import uservariables
 
-foreground = uservariables.PINK
-border = uservariables.TEAL
+colors = uservariables.COLORS
+
+foreground = colors['PINK']
+border = colors['TEAL']
+
 font = uservariables.FONT
+
 
 main_bar = bar.Bar(
         [

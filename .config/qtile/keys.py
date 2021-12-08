@@ -5,6 +5,8 @@ from libqtile.log_utils import logger
 from groups import groups
 from uservariables import uservariables
 
+import re
+
 BROWSER = uservariables.BROWSER
 TERM = uservariables.TERM
 EDITOR = uservariables.EDITOR
@@ -21,6 +23,20 @@ def move_all(q, i):
     for window in windows:
         window.togroup(i.name, switch_group=False)
     q.groups[int(i.name) - 1].cmd_toscreen()
+
+def open_browser(q):
+    def open_link(user_input):
+        regexp = re.compile(r'(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-&?=%.]+')
+        if regexp.search(user_input):
+            q.cmd_spawn(f'{BROWSER} {user_input}')
+        else:
+            logger.warning('a')
+            q.cmd_spawn(f'{BROWSER} duckduckgo.com/{user_input}')
+
+
+    widgets = q.current_screen.top.widgets
+    prompt = next(w for w in widgets if w.name == 'prompt')
+    prompt.start_input(BROWSER, open_link)
 
 
 mod = 'mod4'
@@ -71,7 +87,8 @@ keys = [
 
     # Program shortcuts
     Key([mod], "Return", lazy.spawn(TERM), desc="Launch terminal"),
-    Key([mod], "b", lazy.spawn(BROWSER), desc="Launch web browser"),
+    # Key([mod], "b", lazy.spawn(BROWSER), desc="Launch web browser"),
+    Key([mod], "b", lazy.function(open_browser), desc="Launch web browser"),
     Key([mod], "f", lazy.spawn("freetube"), desc="Launch Freetube"),
     Key([mod], "s", lazy.spawn("steam"), desc="Launch Steam"),
 ]

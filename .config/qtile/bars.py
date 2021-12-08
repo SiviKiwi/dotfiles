@@ -1,23 +1,45 @@
 from libqtile import bar, widget
 from datetime import date
 
+from uservariables import uservariables
+
+colors = uservariables.COLORS
+
+foreground = colors['PINK']
+border = colors['TEAL']
+
+font = uservariables.FONT
+
+
 main_bar = bar.Bar(
         [
-            widget.GroupBox(),
-            widget.Prompt(),
+            widget.GroupBox(
+                highlight_method='text',
+                disable_drag=True,
+                use_mouse_wheel=False,
+                this_current_screen_border=border,
+                this_screen_border=border,
+                foreground=foreground,
+                active=foreground,
+                inactive=foreground,
+                font=font,
+                ),
+
+            widget.Prompt(
+                foreground=foreground,
+                font=font,
+                ),
             #widget.WindowName(),
             widget.Spacer(
                 lenght=bar.STRETCH
                 ),
-            widget.PulseVolume(),
-            widget.CheckUpdates(
-                display_format='Updates: {updates}',
-                distro='Arch',
-                colour_have_updates='990000',
-                color_no_updates='007300',
-                update_interval=1800,
-                execute='alacritty -e sudo pacman -Syu'
+            widget.PulseVolume(
+                foreground=foreground,
+                font=font,
                 ),
-            widget.Systray(),
-            widget.Clock(format=f'%a %d-%m-%Y | Week {date.today().isocalendar()[1]} | %H:%M'),
-        ], 24)
+            widget.Clock(
+                format=f'| %a %d-%m-%Y | Week {date.today().isocalendar()[1]} | %H:%M',
+                foreground=foreground,
+                font=font,
+                ),
+            ], 24, opacity=1)

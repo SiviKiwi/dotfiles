@@ -31,7 +31,7 @@ def open_browser(q):
             q.cmd_spawn(f'{BROWSER} {user_input}')
         else:
             logger.warning('a')
-            q.cmd_spawn(f'{BROWSER} duckduckgo.com/{user_input}')
+            q.cmd_spawn(f'{BROWSER} duckduckgo.com/?q={"+".join(user_input.split(" "))}')
 
 
     widgets = q.current_screen.top.widgets

@@ -10,12 +10,14 @@ from keys import keys
 from groups import groups
 from screens import screens
 
+import uservariables
 
+border_color = uservariables.uservariables.COLORS['GRAY']
 
 layouts = [
-        layout.MonadTall(border_width=1, single_border_width=0),
+        layout.MonadTall(margin=8, single_margin=0, border_width=1, single_border_width=0, border_focus=border_color),
         #layout.Columns(border_focus_stack='#d75f5f'),
-        layout.Floating(),
+        layout.Floating(border_width=0),
 
 ]
 
@@ -45,7 +47,10 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='ssh-askpass'),  # ssh-askpass
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
-    Match(title='Picture in picture'), # Floating freetube window
+    Match(title='Picture in picture'), # Freetube
+    Match(wm_class='battle.net.exe'), # Battle.net
+    Match(wm_class='display'), # Imagemagic display
+    Match(title='Åpne bilde'), # Xournalpp choose image
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"

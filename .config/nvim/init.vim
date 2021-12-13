@@ -64,7 +64,7 @@ endfunction
 
 """"""" General coding stuff """""""
 " Highlight 80th column
-" set colorcolumn=80
+set colorcolumn=80
 " Always show status bar
 set laststatus=2
 " Let plugins show effects after 500ms, not 4s

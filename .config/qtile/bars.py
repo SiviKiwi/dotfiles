@@ -29,7 +29,6 @@ main_bar = bar.Bar(
                 inactive=foreground,
                 font=font,
                 ),
-
             widget.Prompt(
                 foreground=foreground,
                 font=font,
@@ -38,7 +37,6 @@ main_bar = bar.Bar(
             widget.Spacer(
                 lenght=bar.STRETCH
                 ),
-            <<<<<<< HEAD
             widget.TextBox(
                 text='SHIT',
                 mouse_callbacks={'Button1':poop},
@@ -60,5 +58,5 @@ main_bar = bar.Bar(
                 format='{char} {percent:2.0%}',
                 foreground=foreground,
                 font=font,
-                )
+                ),
             ], 24, opacity=1)

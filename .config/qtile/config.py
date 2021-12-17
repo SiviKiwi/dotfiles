@@ -15,7 +15,13 @@ import uservariables
 border_color = uservariables.uservariables.COLORS['GRAY']
 
 layouts = [
-        layout.MonadTall(margin=8, single_margin=0, border_width=1, single_border_width=0, border_focus=border_color),
+        layout.MonadTall(
+            margin=8,
+            single_margin=0,
+            border_width=1,
+            single_border_width=0,
+            border_focus=border_color
+            ),
         #layout.Columns(border_focus_stack='#d75f5f'),
         layout.Floating(border_width=0),
 

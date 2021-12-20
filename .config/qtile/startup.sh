@@ -6,4 +6,4 @@ exec nitrogen --restore &
 #exec thunderbird &
 
 # Enable mouse hide on inactivity
-unclutter -idle 2 -root
+unclutter -idle 2 -root &

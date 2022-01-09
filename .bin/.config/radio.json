@@ -38,6 +38,11 @@
         "name":"Cowboy Bebop",
         "alias":"cb",
         "url":"https://youtube.com/playlist?list=PLEqqgD-xgjpLAzxAu8Wz9PLSQEFQ_o5Pl"
+    },
+    {
+        "name":"80s City Pop",
+        "alias":"cp",
+        "url":"https://youtube.com/playlist?list=PLFn4dkBSmLS3yXEJXQjvAGP0kV92KAJtq"
     }
 ]
 

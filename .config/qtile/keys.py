@@ -28,10 +28,10 @@ def open_browser(q):
     def open_link(user_input):
         regexp = re.compile(r'(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-&?=%.]+')
         if regexp.search(user_input):
-            q.cmd_spawn(f'{BROWSER} {user_input}')
+            q.cmd_spawn(f'{BROWSER} --new-window {user_input}')
         else:
             logger.warning('a')
-            q.cmd_spawn(f'{BROWSER} duckduckgo.com/?q={"+".join(user_input.split(" "))}')
+            q.cmd_spawn(f'{BROWSER} --new-window duckduckgo.com/?q={"+".join(user_input.split(" "))}')
 
 
     widgets = q.current_screen.top.widgets

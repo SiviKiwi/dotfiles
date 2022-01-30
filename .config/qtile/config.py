@@ -52,6 +52,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='display'), # Imagemagic display
     Match(title='Åpne bilde'), # Xournalpp choose image
     Match(wm_class='riotclientux.exe'), # Riot client
+    Match(wm_class='leagueclientux.exe'), # League client
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"

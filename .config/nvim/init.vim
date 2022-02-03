@@ -34,6 +34,10 @@ Plugin 'skywind3000/asyncrun.vim'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 
+" Arduino Highlights
+Plugin 'sudar/vim-arduino-syntax'
+Plugin 'stevearc/vim-arduino'
+
 
 " After all plugins...
 call vundle#end()
@@ -43,6 +47,9 @@ call vundle#end()
 " Don't mess up undo history
 let g:jedi#show_call_signatures = "0"
 
+""""""" Arduino """""""
+let g:arduino_dir = '/usr/share/arduino'
+let g:arduino_cmd = '/usr/local/bin/arduino'
 
 """"""" SuperTab configuration """""""
 "let g:SuperTabDefaultCompletionType = "<c-x><c-u>"

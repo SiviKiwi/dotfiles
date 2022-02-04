@@ -30,7 +30,6 @@ def open_browser(q):
         if regexp.search(user_input):
             q.cmd_spawn(f'{BROWSER} --new-window {user_input}')
         else:
-            logger.warning('a')
             q.cmd_spawn(f'{BROWSER} --new-window duckduckgo.com/?q={"+".join(user_input.split(" "))}')
 
 

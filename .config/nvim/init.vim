@@ -64,6 +64,7 @@ endfunction
 
 """"""" General coding stuff """""""
 " Highlight 80th column
+highlight ColorColumn ctermbg=238
 set colorcolumn=80
 " Always show status bar
 set laststatus=2

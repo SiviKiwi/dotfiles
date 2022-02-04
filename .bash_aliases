@@ -21,3 +21,7 @@ alias twitch='$HOME/.bin/twitch.sh '
 
 # Alias for taking a sceenshot with gscreenshot
 alias screenshot='gscreenshot -sf $HOME/Bilete/$(date +"%Y-%m-%d_%T.png") '
+
+# Aliases for exit
+alias :q='exit'
+alias q='exit'

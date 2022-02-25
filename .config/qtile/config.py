@@ -12,7 +12,7 @@ from screens import screens
 
 import uservariables
 
-border_color = uservariables.uservariables.COLORS['GRAY']
+border_color = uservariables.uservariables.COLORS['TEAL']
 
 layouts = [
         layout.MonadTall(margin=8, single_margin=0, border_width=1, single_border_width=0, border_focus=border_color),

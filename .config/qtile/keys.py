@@ -90,6 +90,7 @@ keys = [
     Key([mod], "b", lazy.function(open_browser), desc="Launch web browser"),
     Key([mod], "f", lazy.spawn("freetube"), desc="Launch Freetube"),
     Key([mod], "s", lazy.spawn("steam"), desc="Launch Steam"),
+    Key([mod], "e", lazy.spawn("emacs"), desc="Launch Doom Emacs"),
 ]
 
 for i in groups:

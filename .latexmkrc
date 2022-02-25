@@ -1,1 +1,1 @@
-$pdf_previewer = 'start apvlv';
+$pdf_previewer = 'start zathura';

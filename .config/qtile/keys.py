@@ -88,9 +88,8 @@ keys = [
     Key([mod], "Return", lazy.spawn(TERM), desc="Launch terminal"),
     # Key([mod], "b", lazy.spawn(BROWSER), desc="Launch web browser"),
     Key([mod], "b", lazy.function(open_browser), desc="Launch web browser"),
-    Key([mod], "f", lazy.spawn("freetube"), desc="Launch Freetube"),
     Key([mod], "s", lazy.spawn("steam"), desc="Launch Steam"),
-    Key([mod], "e", lazy.spawn("emacs"), desc="Launch Doom Emacs"),
+    Key([mod], "e", lazy.spawn("emacsclient -c -a 'emacs'"), desc="Launch Doom Emacs"),
 ]
 
 for i in groups:

@@ -5,7 +5,7 @@
 clear
 
 # Get video title
-title=`youtube-dl --no-warnings --skip-download -e $1`
+title=`yt-dlp --no-warnings --skip-download -e $1`
 
 echo -e "\033[1;33mCurrently Playing: \c\033[0m"
 echo -e "\033[0;35m$title\033[0m"

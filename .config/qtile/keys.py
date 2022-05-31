@@ -29,13 +29,15 @@ def open_browser(q):
         regexp = re.compile(r'(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-&?=%.]+')
         if regexp.search(user_input):
             q.cmd_spawn(f'{BROWSER} --new-window {user_input}')
-        else:
+        elif len(user_input) > 0:
             q.cmd_spawn(f'{BROWSER} --new-window duckduckgo.com/?q={"+".join(user_input.split(" "))}')
+        else:
+            q.cmd_spawn(f'{BROWSER} --new-window')
 
 
     widgets = q.current_screen.top.widgets
     prompt = next(w for w in widgets if w.name == 'prompt')
-    prompt.start_input(BROWSER, open_link)
+    prompt.start_input(BROWSER, open_link, allow_empty_input=True)
 
 
 mod = 'mod4'

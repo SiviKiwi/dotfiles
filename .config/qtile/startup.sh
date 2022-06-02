@@ -8,8 +8,8 @@ exec thunderbird &
 # Enable mouse hide on inactivity
 unclutter -idle 2 -root &
 
-exec qbittorrent &
+#exec qbittorrent &
 exec thunderbird &
-exec discord &
+#exec discord &
 
 exec emacs --daemon &

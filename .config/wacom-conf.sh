@@ -22,7 +22,7 @@ velocity=$(xinput list-props "${stylus}" | grep "Velocity Scaling" | awk -F'[()]
 
 xsetwacom set "${stylus}" Area 0 0 20000 12500
 xsetwacom set "${stylus}" Mode Relative
-xsetwacom set "${stylus}" CursorProximity 20
+xsetwacom set "${stylus}" CursorProximity 15
 xsetwacom set "${stylus}" Rotate half
 xinput set-prop "${stylus}" "${deceleration}" 2.5
 xinput set-prop "${stylus}" "${velocity}" 10

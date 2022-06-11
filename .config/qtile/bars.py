@@ -60,6 +60,7 @@ main_bar = bar.Bar(
             widget.CPUGraph(
                 graph_color=foreground+'.3',
                 fill_color=foreground,
+                line_width=1,
                 border_width=0,
                 mouse_callbacks={'Button1':bashtop},
                 ),

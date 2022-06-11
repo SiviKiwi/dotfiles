@@ -38,7 +38,7 @@ main_bar = bar.Bar(
                 font=font,
                 ),
             widget.Clock(
-                format=f'| %a %d-%m-%Y | Week {date.today().isocalendar()[1]} | %H:%M',
+                format=f'| %a %d-%m-%Y | Week %W | %H:%M',
                 foreground=foreground,
                 font=font,
                 ),

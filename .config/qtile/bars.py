@@ -11,10 +11,13 @@ foreground = colors['PINK']
 border = colors['TEAL']
 
 font = uservariables.FONT
+term = uservariables.TERM
 
 def poop():
     subprocess.Popen("xvkbd -xsendevent -text \\[U0001F4A9]".split())
 
+def bashtop():
+    subprocess.Popen(f'{term} -e /bin/bashtop'.split())
 
 main_bar = bar.Bar(
         [
@@ -48,6 +51,23 @@ main_bar = bar.Bar(
             widget.PulseVolume(
                 foreground=foreground,
                 font=font,
+                ),
+            widget.TextBox(
+                text='|',
+                foreground=foreground,
+                font=font,
+                ),
+            widget.CPUGraph(
+                graph_color=foreground+'.3',
+                fill_color=foreground,
+                border_width=0,
+                mouse_callbacks={'Button1':bashtop},
+                ),
+            widget.CPU(
+                format='{load_percent}%',
+                foreground=foreground,
+                font=font,
+                mouse_callbacks={'Button1':bashtop},
                 ),
             widget.Clock(
                 format=f'| %a %d-%m-%Y | Week %W | %H:%M |',

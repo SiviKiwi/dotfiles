@@ -53,7 +53,8 @@ floating_layout = layout.Floating(
     Match(title='Picture in picture'), # Freetube
     Match(wm_class='battle.net.exe'), # Battle.net
     Match(wm_class='display'), # Imagemagic display
-    Match(title='Åpne bilde'), # Xournalpp choose image
+    Match(title='Åpne bilde'), # Xournalpp choose
+    Match(wm_class='explorer.exe'), #Wine apps open this
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"

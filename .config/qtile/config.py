@@ -61,6 +61,7 @@ floating_layout = layout.Floating(
     Match(wm_class='display'), # Imagemagic display
     Match(title='Åpne bilde'), # Xournalpp choose
     Match(wm_class='explorer.exe'), #Wine apps open this
+    Match(wm_class='hearthstone.exe'),
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"

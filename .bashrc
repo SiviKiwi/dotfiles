@@ -135,5 +135,6 @@ source "$HOME/.cargo/env"
 # Add enviroment variable for tlmgr
 export TEXMFDIST=/usr/share/texmf-dist
 
-# Run neofetch
-neofetch
+# Use vim keys in terminal
+set -o vi
+

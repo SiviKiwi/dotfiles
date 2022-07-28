@@ -135,5 +135,3 @@ source "$HOME/.cargo/env"
 # Add enviroment variable for tlmgr
 export TEXMFDIST=/usr/share/texmf-dist
 
-# Run neofetch
-neofetch

@@ -130,7 +130,6 @@ export EDITOR="/usr/bin/nvim"
 
 
 export PATH="~/.emacs.d/bin:$PATH"
-source "$HOME/.cargo/env"
 
 # Add enviroment variable for tlmgr
 export TEXMFDIST=/usr/share/texmf-dist

@@ -135,3 +135,6 @@ source "$HOME/.cargo/env"
 # Add enviroment variable for tlmgr
 export TEXMFDIST=/usr/share/texmf-dist
 
+# Use vim keys in terminal
+set -o vi
+

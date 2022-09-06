@@ -80,4 +80,4 @@ main_bar = bar.Bar(
                 foreground=foreground,
                 font=font,
                 ),
-            ], 24, opacity=1)
+            ], 34, opacity=1)

@@ -19,6 +19,7 @@ class uservariables:
             'screenshot':'gscreenshot -sf $HOME/Bilete/Skjermdump/$(date +"%Y-%m-%d_%T.png")',
             'profile':'firefox --new-window -P default',
             'q':'shutdown now',
+            'r':'reboot',
             }
 
 

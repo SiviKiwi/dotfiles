@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -130,7 +130,6 @@ export EDITOR="/usr/bin/nvim"
 
 
 export PATH="~/.emacs.d/bin:$PATH"
-source "$HOME/.cargo/env"
 
 # Add enviroment variable for tlmgr
 export TEXMFDIST=/usr/share/texmf-dist

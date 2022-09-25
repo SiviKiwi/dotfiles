@@ -83,28 +83,28 @@
 #    Mod4+Delete
 
 # Type ø
-"xvkbd -xsendevent -text '\[U00F8]'"
-   Alt+semicolon
+"xdotool key --clearmodifiers U00F8"
+   Release+Alt+semicolon
 
 # Type capital ø
-"xvkbd -xsendevent -text '\[U00D8]'"
-    Shift+Alt+semicolon
+"xdotool key --clearmodifiers U00D8"
+    Release+Shift+Alt+semicolon
 
 # Type æ
-"xvkbd -xsendevent -text '\[U00E6]'"
-   Alt+apostrophe
+"xdotool key --clearmodifiers U00E6"
+   Release+Alt+apostrophe
 
 # Type capital æ
-"xvkbd -xsendevent -text '\[U00C6]'"
-    Shift+Alt+apostrophe
+"xdotool key --clearmodifiers U00C6"
+    Release+Shift+Alt+apostrophe
 
 # Type å
-"xvkbd -xsendevent -text '\[U00E5]'"
-   Alt+bracketleft
+"xdotool key --clearmodifiers U00E5"
+   Release+Alt+bracketleft
 
 # Type capital å
-"xvkbd -xsendevent -text '\[U00C5]'"
-    Shift+Alt+bracketleft
+"xdotool key --clearmodifiers U00C5"
+    Release+Shift+Alt+bracketleft
 
 
 ##################################

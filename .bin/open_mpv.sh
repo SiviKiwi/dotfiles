@@ -1,3 +1,3 @@
 #! /bin/bash
 
-mpv $(xclip -o)
+mpv $(xclip -sel c -o)

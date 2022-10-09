@@ -6,6 +6,8 @@ from groups import groups
 from uservariables import uservariables
 
 import re
+import subprocess
+import os
 
 BROWSER = uservariables.BROWSER
 TERM = uservariables.TERM
@@ -38,6 +40,9 @@ def open_browser(q):
     widgets = q.current_screen.top.widgets
     prompt = next(w for w in widgets if w.name == 'prompt')
     prompt.start_input(BROWSER, open_link, allow_empty_input=True)
+
+def open_mpv(q):
+    q.cmd_spawn('/home/sivert/.bin/open_mpv.sh')
 
 
 mod = 'mod4'
@@ -92,6 +97,7 @@ keys = [
     Key([mod], "b", lazy.function(open_browser), desc="Launch web browser"),
     Key([mod], "s", lazy.spawn("steam"), desc="Launch Steam"),
     Key([mod], "e", lazy.spawn("emacsclient -c -a 'emacs'"), desc="Launch Doom Emacs"),
+    Key([mod], "m", lazy.function(open_mpv), desc="Open clipboard in mpv"),
 ]
 
 for i in groups:

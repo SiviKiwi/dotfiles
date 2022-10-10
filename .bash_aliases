@@ -23,7 +23,7 @@ alias twitch='$HOME/.bin/twitch.sh '
 alias screenshot='gscreenshot -sf $HOME/Bilete/$(date +"%Y-%m-%d_%T.png") '
 
 # Keep forgetting i use doas now
-alias sudo='doas'
+# alias sudo='doas'
 
 # Aliases for exit
 alias :q='exit'

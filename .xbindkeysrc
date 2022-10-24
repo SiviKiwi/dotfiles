@@ -106,6 +106,10 @@
 "xdotool key --clearmodifiers U00C5"
     Release+Shift+Alt+bracketleft
 
+# Take screenshot
+"maim -s $HOME/Bilete/Skjermdump/$(date +"%Y-%m-%d_%T.png")"
+    Print
+
 
 ##################################
 # End of xbindkeys configuration #

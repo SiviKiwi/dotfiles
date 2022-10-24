@@ -52,3 +52,4 @@
 (package! rainbow-mode)
 (package! mediawiki)
 (package! rtf-mode)
+(package! platformio-mode)

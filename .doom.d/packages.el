@@ -53,3 +53,4 @@
 (package! mediawiki)
 (package! rtf-mode)
 (package! platformio-mode)
+(package! typescript-mode)

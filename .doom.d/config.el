@@ -75,6 +75,8 @@
 
 (set-face-attribute 'default nil :height 100)
 
+(setq calendar-week-start-day 1)
+
 (use-package mediawiki
   :config
   (setq mediawiki-site-alist '(("MotstandenWiki"
@@ -100,3 +102,7 @@
   (let ((command-output (int-bin (buffer-substring (mark) (point)))))
     (kill-region (mark) (point))
     (insert command-output)))
+
+(use-package typescript-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode)))

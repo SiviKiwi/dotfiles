@@ -18,8 +18,9 @@
 
 (setq exwm-input-global-keys
       `(
-        ;; Bind "s-r" to exit char-mode and fullscreen mode.
-        ([?\s-q] . exwm-reset)
+        ;; Bind "s-R" to exit char-mode and fullscreen mode.
+        ([?\s-R] . exwm-reset)
+        ([?\s-q] . kill-current-buffer)
         ;; Bind "s-w" to switch workspace interactively.
         ([?\s-w] . exwm-workspace-switch)
         ;; Bind "s-0" to "s-9" to switch to a workspace by its index.
@@ -33,7 +34,14 @@
         ;; buffer does not bother you).
         ([?\s-r] . (lambda (command)
                      (interactive (list (read-shell-command "$ ")))
-                     (start-process-shell-command command nil command)))))
+                     (start-process-shell-command command nil command)))
+        ([?\s-l] . evil-window-right)
+        ([?\s-k] . evil-window-up)
+        ([?\s-j] . evil-window-down)
+        ([?\s-h] . evil-window-left)
+        ([?\s-t] . (lambda ()
+                     (+evil/window-vsplit-and-follow)
+                     (+vterm/here)))))
 
 ;;; Emacs config
 (use-package mediawiki

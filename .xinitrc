@@ -51,5 +51,5 @@ fi
 xbindkeys
 setxkbmap -option caps:super
 
-emacs --deamon -f exwm-enable
+emacs --daemon -f exwm-enable
 exec emacsclient -c

@@ -50,4 +50,6 @@ fi
 
 xbindkeys
 setxkbmap -option caps:super
-exec qtile start
+
+emacs --deamon -f exwm-enable
+exec emacsclient -c

@@ -17,7 +17,14 @@
 (require 'exwm)
 (require 'exwm-config)
 
+(add-hook 'exwm-update-class-hook
+          (lambda ()
+            (exwm-workspace-rename-buffer exwm-class-name)))
+
 (setq exwm-workspace-number 10)
+
+(setq exwm-layout-show-all-buffers t)
+(setq exwm-workspace-show-all-buffers t)
 
 (setq exwm-input-global-keys
       `(
@@ -32,7 +39,7 @@
                       (lambda ()
                         (interactive)
                         (exwm-workspace-switch-create ,i))))
-                  (number-sequence 1 9))
+                  (number-sequence 0 9))
         ;; Bind "s-r" to launch applications ('M-&' also works if the output
         ;; buffer does not bother you).
         ([?\s-r] . (lambda (command)
@@ -42,6 +49,10 @@
         ([?\s-k] . evil-window-up)
         ([?\s-j] . evil-window-down)
         ([?\s-h] . evil-window-left)
+        ([?\s-L] . +evil/window-move-right)
+        ([?\s-K] . +evil/window-move-up)
+        ([?\s-J] . +evil/window-move-down)
+        ([?\s-H] . +evil/window-move-left)
         ([?\s-s] . +evil/window-split-and-follow)
         ([?\s-v] . +evil/window-vsplit-and-follow)
 ;; FIXME: dont understand
@@ -80,6 +91,15 @@
   (let ((command-output (int-bin (buffer-substring (mark) (point)))))
     (kill-region (mark) (point))
     (insert command-output)))
+
+(map! :leader
+      (:prefix-map ("e" . "empv")
+        :desc "Start radio" "r" #'empv-play-radio
+        :desc "Play/pause" "SPC" #'empv-toggle
+        :desc "Toggle video" "v" #'empv-toggle-video
+        :desc "Next" ">" #'empv-playlist-next
+        :desc "Previous" "<" #'empv-playlist-prev
+        :desc "Quit empv" "q" #'empv-exit))
 
 
 (use-package empv

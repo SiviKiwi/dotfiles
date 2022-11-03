@@ -55,3 +55,5 @@
 (package! rtf-mode)
 (package! platformio-mode)
 (package! typescript-mode)
+(package! empv
+  :recipe (:host github :repo "isamert/empv.el"))

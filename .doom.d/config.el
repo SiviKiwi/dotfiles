@@ -10,6 +10,9 @@
 
 (setq calendar-week-start-day 1)
 
+(display-time-mode 1)
+(setq display-time-24hr-format t)
+
 ;;; EXWM config
 (require 'exwm)
 (require 'exwm-config)
@@ -29,7 +32,7 @@
                       (lambda ()
                         (interactive)
                         (exwm-workspace-switch-create ,i))))
-                  (number-sequence 0 9))
+                  (number-sequence 1 9))
         ;; Bind "s-r" to launch applications ('M-&' also works if the output
         ;; buffer does not bother you).
         ([?\s-r] . (lambda (command)
@@ -39,9 +42,13 @@
         ([?\s-k] . evil-window-up)
         ([?\s-j] . evil-window-down)
         ([?\s-h] . evil-window-left)
-        ([?\s-t] . (lambda ()
-                     (+evil/window-vsplit-and-follow)
-                     (+vterm/here)))))
+        ([?\s-s] . +evil/window-split-and-follow)
+        ([?\s-v] . +evil/window-vsplit-and-follow)
+;; FIXME: dont understand
+;;        ([?\s-t] . (lambda ()
+;;                     (+evil/window-vsplit-and-follow)
+;;                     (+vterm/here)))
+        ))
 
 ;;; Emacs config
 (use-package mediawiki
@@ -73,3 +80,16 @@
   (let ((command-output (int-bin (buffer-substring (mark) (point)))))
     (kill-region (mark) (point))
     (insert command-output)))
+
+
+(use-package empv
+  :config
+  (setq empv-invidious-instance "https://invidious.tiekoetter.com/")
+  (add-to-list 'empv-mpv-args "--ytdl-format=best")
+  (setq empv-radio-channels '(("Lain Cyberia" . "https://lainon.life/radio/cyberia.ogg")
+                              ("https://lainon.life/radio/cyberia.ogg" . "https://stream.nightride.fm/darksynth.m4a")
+                              ("Thanatos Retrowave" . "https://www.youtube.com/channel/UCmYTgpKxd-QOJCPDrmaXuqQ/live")
+                              ("Lofi Hip Hop beats to relax/study" . "https://www.youtube.com/channel/UCSJ4gkVC6NrvII8umztf0Ow/live")
+                              ("Va11 Hall-A Radio" . "https://www.youtube.com/playlist?list=PLQuOY1HVtJ__GGoVvMXuT9ezBouejgvTq")
+                              ("80s City Pop" . "https://youtube.com/playlist?list=PLFn4dkBSmLS3yXEJXQjvAGP0kV92KAJtq")
+                              ("Danger/u/ radio" . "http://radio.dangeru.us:8000/stream.ogg"))))

@@ -13,53 +13,6 @@
 (display-time-mode 1)
 (setq display-time-24hr-format t)
 
-;;; EXWM config
-(require 'exwm)
-(require 'exwm-config)
-
-(add-hook 'exwm-update-class-hook
-          (lambda ()
-            (exwm-workspace-rename-buffer exwm-class-name)))
-
-(setq exwm-workspace-number 10)
-
-(setq exwm-layout-show-all-buffers t)
-(setq exwm-workspace-show-all-buffers t)
-
-(setq exwm-input-global-keys
-      `(
-        ;; Bind "s-R" to exit char-mode and fullscreen mode.
-        ([?\s-R] . exwm-reset)
-        ([?\s-q] . kill-current-buffer)
-        ;; Bind "s-w" to switch workspace interactively.
-        ([?\s-w] . exwm-workspace-switch)
-        ;; Bind "s-0" to "s-9" to switch to a workspace by its index.
-        ,@(mapcar (lambda (i)
-                    `(,(kbd (format "s-%d" i)) .
-                      (lambda ()
-                        (interactive)
-                        (exwm-workspace-switch-create ,i))))
-                  (number-sequence 0 9))
-        ;; Bind "s-r" to launch applications ('M-&' also works if the output
-        ;; buffer does not bother you).
-        ([?\s-r] . (lambda (command)
-                     (interactive (list (read-shell-command "$ ")))
-                     (start-process-shell-command command nil command)))
-        ([?\s-l] . evil-window-right)
-        ([?\s-k] . evil-window-up)
-        ([?\s-j] . evil-window-down)
-        ([?\s-h] . evil-window-left)
-        ([?\s-L] . +evil/window-move-right)
-        ([?\s-K] . +evil/window-move-up)
-        ([?\s-J] . +evil/window-move-down)
-        ([?\s-H] . +evil/window-move-left)
-        ([?\s-s] . +evil/window-split-and-follow)
-        ([?\s-v] . +evil/window-vsplit-and-follow)
-;; FIXME: dont understand
-;;        ([?\s-t] . (lambda ()
-;;                     (+evil/window-vsplit-and-follow)
-;;                     (+vterm/here)))
-        ))
 
 ;;; Emacs config
 (use-package mediawiki

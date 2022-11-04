@@ -107,7 +107,7 @@
   (setq empv-invidious-instance "https://invidious.tiekoetter.com/")
   (add-to-list 'empv-mpv-args "--ytdl-format=best")
   (setq empv-radio-channels '(("Lain Cyberia" . "https://lainon.life/radio/cyberia.ogg")
-                              ("https://lainon.life/radio/cyberia.ogg" . "https://stream.nightride.fm/darksynth.m4a")
+                              ("Darksynth Radio" . "https://stream.nightride.fm/darksynth.m4a")
                               ("Thanatos Retrowave" . "https://www.youtube.com/channel/UCmYTgpKxd-QOJCPDrmaXuqQ/live")
                               ("Lofi Hip Hop beats to relax/study" . "https://www.youtube.com/channel/UCSJ4gkVC6NrvII8umztf0Ow/live")
                               ("Va11 Hall-A Radio" . "https://www.youtube.com/playlist?list=PLQuOY1HVtJ__GGoVvMXuT9ezBouejgvTq")

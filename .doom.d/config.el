@@ -41,9 +41,6 @@
 ;; they are implemented.
 
 (set-face-attribute 'default nil :height 180)
-=======
-(set-face-attribute 'default nil :height 100)
->>>>>>> 7af62b8111d00401efda6276b4d7a5c495cfb351
 
 (setq calendar-week-start-day 1)
 

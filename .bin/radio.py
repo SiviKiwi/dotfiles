@@ -40,6 +40,6 @@ while not quit_radio:
 
         print(f'{colored("Currently Playing:", "yellow", attrs=["bold"])} {colored(channel["name"], "magenta")}')
 
-        os.system(f'mpv --no-video --shuffle --msg-level=ffmpeg=no,ffmpeg/demuxer=no,lavf=no {channel["url"]}')
+        os.system(f'mpv --no-video --shuffle --msg-level=ffmpeg=no,ffmpeg/demuxer=no,lavf=no --ytdl=yes --input-ipc-server=/tmp/mpv-socket {channel["url"]}')
         os.system('clear')
         print(colored('Choose a channel:', 'yellow', attrs=['bold']))

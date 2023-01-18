@@ -54,3 +54,5 @@
 (package! rtf-mode)
 (package! platformio-mode)
 (package! typescript-mode)
+(package! cdlatex)
+(package! texmathp)

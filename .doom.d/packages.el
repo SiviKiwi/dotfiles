@@ -49,6 +49,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(package! exwm)
 (package! rainbow-mode)
 (package! mediawiki)
 (package! rtf-mode)
@@ -56,3 +57,5 @@
 (package! typescript-mode)
 (package! cdlatex)
 (package! texmathp)
+(package! empv
+  :recipe (:host github :repo "isamert/empv.el"))

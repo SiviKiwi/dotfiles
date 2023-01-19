@@ -56,6 +56,5 @@
 (package! platformio-mode)
 (package! typescript-mode)
 (package! cdlatex)
-(package! texmathp)
 (package! empv
   :recipe (:host github :repo "isamert/empv.el"))

@@ -34,5 +34,5 @@ if  uservariables.DEVICE == "DESKTOP":
     uservariables.BARSIZE = 15
 
 elif uservariables.DEVICE == "LAPTOP":
-    uservariables.FONTSIZE = 12
+    uservariables.FONTSIZE = 20
     uservariables.BARSIZE = 36

@@ -10,9 +10,9 @@ from keys import keys
 from groups import groups
 from screens import screens
 
-import uservariables
+from uservariables import uservariables
 
-border_color = uservariables.uservariables.COLORS['TEAL']
+border_color = uservariables.COLORS['TEAL']
 
 layouts = [
         layout.MonadTall(
@@ -27,9 +27,10 @@ layouts = [
 
 ]
 
+
 widget_defaults = dict(
         font='Jetbrains mono',
-        fontsize=18,
+        fontsize=uservariables.FONTSIZE,
         padding=3,
 )
 extension_defaults = widget_defaults.copy()

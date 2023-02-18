@@ -3,7 +3,7 @@
 (setq org-directory "~/org/")
 
 (cond ((string= (getenv "DEVICE") "DESKTOP") (set-face-attribute 'default nil :height 100))
-      (string= (getenv "DEVICE") "LAPTOP") (set-face-attribute 'default nil :height 120))
+      ((string= (getenv "DEVICE") "LAPTOP") (set-face-attribute 'default nil :height 160)))
 
 
 (setq calendar-week-start-day 1)

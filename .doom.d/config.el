@@ -1,7 +1,10 @@
 (setq doom-theme 'doom-1337)
 (setq display-line-numbers-type 'relative)
 (setq org-directory "~/org/")
-(set-face-attribute 'default nil :height 100)
+
+(cond ((string= (getenv "DEVICE") "DESKTOP") (set-face-attribute 'default nil :height 100))
+      (string= (getenv "DEVICE") "LAPTOP") (set-face-attribute 'default nil :height 120))
+
 
 (setq calendar-week-start-day 1)
 

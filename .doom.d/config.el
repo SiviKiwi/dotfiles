@@ -50,3 +50,10 @@
 
 (global-set-key (kbd "C-c e") 'eval-and-replace)
 
+(use-package nov
+  :config
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
+
+(use-package sly
+  :init
+  (setq inferior-lisp-program "/usr/bin/clisp"))

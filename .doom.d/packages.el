@@ -6,3 +6,5 @@
 (package! cdlatex)
 (package! empv
   :recipe (:host github :repo "isamert/empv.el"))
+(package! nov)
+(package! sly-macrostep)

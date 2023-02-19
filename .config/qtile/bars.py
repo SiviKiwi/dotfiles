@@ -69,13 +69,13 @@ widgets.append(widget.CPU(
                 ))
 if uservariables.DEVICE == "DESKTOP":
     widgets.append(widget.Clock(
-                format=f'| %a %d-%m-%y | week %w | %H:%m ',
+                format=f'| %a %d-%m-%y | week %W | %H:%m ',
                 foreground=foreground,
                 font=font,
                 ))
 elif uservariables.DEVICE == "LAPTOP":
     widgets.append(widget.Clock(
-                format=f'| %a %d-%m-%y | week %w | %H:%m |',
+                format=f'| %a %d-%m-%y | week %W | %H:%m |',
                 foreground=foreground,
                 font=font,
                 ))

@@ -57,3 +57,26 @@
 (use-package sly
   :init
   (setq inferior-lisp-program "/usr/bin/sbcl"))
+
+
+(map! :leader
+      (:prefix-map ("e" . "empv")
+        :desc "Start radio" "r" #'empv-play-radio
+        :desc "Play/pause" "SPC" #'empv-toggle
+        :desc "Toggle video" "v" #'empv-toggle-video
+        :desc "Next" ">" #'empv-playlist-next
+        :desc "Previous" "<" #'empv-playlist-prev
+        :desc "Quit empv" "q" #'empv-exit))
+
+
+(use-package empv
+  :config
+  (setq empv-invidious-instance "https://invidious.tiekoetter.com/")
+  (add-to-list 'empv-mpv-args "--ytdl-format=best")
+  (setq empv-radio-channels '(("Lain Cyberia" . "https://lainon.life/radio/cyberia.ogg")
+                              ("Darksynth Radio" . "https://stream.nightride.fm/darksynth.m4a")
+                              ("Thanatos Retrowave" . "https://www.youtube.com/channel/UCmYTgpKxd-QOJCPDrmaXuqQ/live")
+                              ("Lofi Hip Hop beats to relax/study" . "https://www.youtube.com/channel/UCSJ4gkVC6NrvII8umztf0Ow/live")
+                              ("Va11 Hall-A Radio" . "https://www.youtube.com/playlist?list=PLQuOY1HVtJ__GGoVvMXuT9ezBouejgvTq")
+                              ("80s City Pop" . "https://youtube.com/playlist?list=PLFn4dkBSmLS3yXEJXQjvAGP0kV92KAJtq")
+                              ("Danger/u/ radio" . "http://radio.dangeru.us:8000/stream.ogg"))))

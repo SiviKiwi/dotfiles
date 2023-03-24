@@ -68,6 +68,9 @@
         :desc "Previous" "<" #'empv-playlist-prev
         :desc "Quit empv" "q" #'empv-exit))
 
+(map! :leader
+      ("f n" #'dired-create-empty-file))
+
 
 (use-package empv
   :config

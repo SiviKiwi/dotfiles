@@ -8,3 +8,5 @@
   :recipe (:host github :repo "isamert/empv.el"))
 (package! nov)
 (package! sly-macrostep)
+(package! sly-quicklisp)
+(package! sly-asdf)

@@ -9,7 +9,6 @@ exec thunderbird &
 unclutter -idle 2 -root &
 
 #exec qbittorrent &
-exec thunderbird &
 #exec discord &
 
 exec emacs --daemon &

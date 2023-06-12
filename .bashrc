@@ -137,3 +137,5 @@ export TEXMFDIST=/usr/share/texmf-dist
 # Use vim keys in terminal
 set -o vi
 
+# Autoscale therminal font
+export WINIT_X11_SCALE_FACTOR=1

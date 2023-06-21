@@ -5,6 +5,23 @@
 #+OPTIONS: toc:2
 
 * TABLE OF CONTENTS :toc:
+- [[#load-first][Load first]]
+  - [[#elpaca-package-manager][Elpaca Package Manager]]
+  - [[#load-evil-mode][Load Evil Mode]]
+- [[#keybindings][Keybindings]]
+  - [[#basic-quality-of-life][Basic quality of life]]
+  - [[#general][General]]
+- [[#org-mode][ORG MODE]]
+  - [[#org][ORG]]
+  - [[#source-code-block-tag-expansion][Source Code Block Tag Expansion]]
+- [[#completion][Completion]]
+  - [[#which-key][WHICH-KEY]]
+  - [[#ivy][Ivy]]
+  - [[#company][Company]]
+- [[#visual][Visual]]
+  - [[#fonts][Fonts]]
+  - [[#ui-tweaks][UI tweaks]]
+  - [[#doom-themes][Doom Themes]]
 
 * Load first
 ** Elpaca Package Manager
@@ -74,3 +91,185 @@
 
 
 ** Load Evil Mode
+#+begin_src emacs-lisp
+;; Expands to: (elpaca evil (use-package evil :demand t))
+(use-package evil
+    :init      ;; tweak evil's configuration before loading it
+    (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+    (setq evil-want-keybinding nil)
+    (setq evil-vsplit-window-right t)
+    (setq evil-split-window-below t)
+    (evil-mode))
+  (use-package evil-collection
+    :after evil
+    :config
+    (setq evil-collection-mode-list '(dashboard dired ibuffer))
+    (evil-collection-init))
+  (use-package evil-tutor)
+#+end_src
+
+
+* Keybindings
+** Basic quality of life
+#+begin_src emacs-lisp
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+#+end_src
+
+** General
+#+begin_src emacs-lisp
+    (use-package general
+      :config
+      (general-evil-setup)
+
+      ;; Set 'SCP' as global leader key
+      (general-create-definer bc/leader-keys
+        :states '(normal insert visual emacs)
+        :keymaps 'override
+        :prefix "SPC"
+        :global-prefix "M-SPC")
+
+      (bc/leader-keys
+        "b" '(:ignore t :wk "buffer")
+        "bb" '(switch-to-buffer :wk "Switch buffer")
+        "bk" '(kill-this-buffer :wk "Kill this buffer")
+        "bn" '(next-buffer :wk "Next buffer")
+        "bp" '(previous-buffer :wk "Previous buffer")
+        "br" '(revert-buffer :wk "Reload buffer")
+        "bi" '(ibuffer :wk "Ibuffer"))
+
+    (bc/leader-keys
+      "f" '(:ignore t :wk "files")
+      "ff" '(counsel-find-file :wk "Find file")))
+
+#+end_src
+
+
+* ORG MODE
+** ORG
+#+begin_src emacs-lisp
+(use-package org
+:ensure org-plus-contrib
+:mode (("\\.org\\'" . org-mode))
+:config
+(electric-indent-mode 1)
+(setq org-src-preserve-indentation t) (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+#+end_src
+
+** Source Code Block Tag Expansion
+Org-tempo is not a separate package but a module within org that can be enabled.  Org-tempo allows for '<s' followed by TAB to expand to a begin_src tag.  Other expansions available include:
+
+| Typing the below + TAB | Expands to ...                          |
+|------------------------+-----------------------------------------|
+| <a                     | '#+BEGIN_EXPORT ascii' … '#+END_EXPORT  |
+| <c                     | '#+BEGIN_CENTER' … '#+END_CENTER'       |
+| <C                     | '#+BEGIN_COMMENT' … '#+END_COMMENT'     |
+| <e                     | '#+BEGIN_EXAMPLE' … '#+END_EXAMPLE'     |
+| <E                     | '#+BEGIN_EXPORT' … '#+END_EXPORT'       |
+| <h                     | '#+BEGIN_EXPORT html' … '#+END_EXPORT'  |
+| <l                     | '#+BEGIN_EXPORT latex' … '#+END_EXPORT' |
+| <q                     | '#+BEGIN_QUOTE' … '#+END_QUOTE'         |
+| <s                     | '#+BEGIN_SRC' … '#+END_SRC'             |
+| <v                     | '#+BEGIN_VERSE' … '#+END_VERSE'         |
+
+#+begin_src emacs-lisp 
+(require 'org-tempo)
+#+end_src
+
+* Completion
+** WHICH-KEY
+#+begin_src emacs-lisp
+  (use-package which-key
+    :init
+      (which-key-mode 1)
+    :config
+    (setq which-key-side-window-location 'bottom
+	  which-key-sort-order #'which-key-key-order-alpha
+	  which-key-sort-uppercase-first nil
+	  which-key-add-column-padding 1
+	  which-key-max-display-columns nil
+	  which-key-min-display-lines 6
+	  which-key-side-window-slot -10
+	  which-key-side-window-max-height 0.25
+	  which-key-idle-delay 0.8
+	  which-key-max-description-length 25
+	  which-key-allow-imprecise-window-fit t
+	  which-key-separator " → " ))
+#+end_src
+
+** Ivy
+#+begin_src emacs-lisp
+  (use-package counsel
+    :bind (("M-x" . counsel-M-x)
+           ("C-x C-f" . counsel-find-file)))
+
+#+end_src
+
+** Company
+#+begin_src emacs-lisp
+(use-package company
+:hook (add-hook 'after-init-hook 'global-company-mode))
+
+#+end_src
+
+* Visual
+** Fonts
+#+begin_src emacs-lisp
+  (set-face-attribute 'default nil
+    :font "JetBrains Mono"
+    :height 180
+    :weight 'medium)
+  (set-face-attribute 'variable-pitch nil
+    :font "Sans Serif"
+    :height 180
+    :weight 'medium)
+  (set-face-attribute 'fixed-pitch nil
+    :font "JetBrains Mono"
+    :height 180
+    :weight 'medium)
+  ;; Makes commented text and keywords italics.
+  ;; This is working in emacsclient but not emacs.
+  ;; Your font must have an italic face available.
+  (set-face-attribute 'font-lock-comment-face nil
+    :slant 'italic)
+  (set-face-attribute 'font-lock-keyword-face nil
+    :slant 'italic)
+
+  ;; This sets the default font on all graphical frames created after restarting Emacs.
+  ;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
+  ;; are not right unless I also add this method of setting the default font.
+  ;;(add-to-list 'default-frame-alist '(font . "JetBrains Mono-11"))
+
+  ;; Uncomment the following line if line spacing needs adjusting.
+  (setq-default line-spacing 0.12)
+
+#+end_src
+
+** UI tweaks
+
+#+begin_src emacs-lisp
+
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+
+  (global-display-line-numbers-mode 1)
+  (global-visual-line-mode t)
+
+#+end_src
+
+** Doom Themes
+#+begin_src emacs-lisp
+(use-package doom-themes
+  :ensure t
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-1337 t)
+
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
+#+end_src

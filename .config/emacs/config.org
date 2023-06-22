@@ -155,7 +155,7 @@
 :mode (("\\.org\\'" . org-mode))
 :config
 (electric-indent-mode 1)
-(setq org-src-preserve-indentation t) (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(setq org-src-preserve-indentation t) (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+end_src
 
 ** Source Code Block Tag Expansion
@@ -255,11 +255,31 @@ Org-tempo is not a separate package but a module within org that can be enabled.
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
 
-  (global-display-line-numbers-mode 1)
   (global-visual-line-mode t)
 
 #+end_src
 
+*** line numbers
+#+begin_src emacs-lisp
+(require 'display-line-numbers)
+
+(defcustom display-line-numbers-exempt-modes
+  '(vterm-mode eshell-mode shell-mode term-mode ansi-term-mode)
+  "Major modes on which to disable line numbers."
+  :group 'display-line-numbers
+  :type 'list
+  :version "green")
+
+(defun display-line-numbers--turn-on ()
+  "Turn on line numbers except for certain major modes.
+Exempt major modes are defined in `display-line-numbers-exempt-modes'."
+  (unless (or (minibufferp)
+              (member major-mode display-line-numbers-exempt-modes))
+    (display-line-numbers-mode)))
+
+(global-display-line-numbers-mode)
+
+#+end_src
 ** Doom Themes
 #+begin_src emacs-lisp
 (use-package doom-themes
@@ -272,4 +292,14 @@ Org-tempo is not a separate package but a module within org that can be enabled.
 
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
+#+end_src
+
+* File modes
+#+begin_src emacs-lisp
+(use-package pdf-tools
+  :load-path "site-lisp/pdf-tools/lisp"
+  :magic ("%PDF" . pdf-view-mode)
+  :config
+  (pdf-tools-install :no-query))
+
 #+end_src

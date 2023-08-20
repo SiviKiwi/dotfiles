@@ -40,7 +40,7 @@ widgets.append(widget.Spacer(
                 lenght=bar.STRETCH
                 ))
 widgets.append(MPVNowPlaying(
-                socket_path='/tmp/mpv-socket',
+                socket_path='/tmp/empv-socket',
                 update_interval=5,
                 foreground=foreground,
                 font=font,
@@ -69,13 +69,13 @@ widgets.append(widget.CPU(
                 ))
 if uservariables.DEVICE == "DESKTOP":
     widgets.append(widget.Clock(
-                format=f'| %a %d-%m-%y | week %W | %H:%M ',
+                format='| %a %d-%m-%y | week %W | %H:%M ',
                 foreground=foreground,
                 font=font,
                 ))
 elif uservariables.DEVICE == "LAPTOP":
     widgets.append(widget.Clock(
-                format=f'| %a %d-%m-%y | week %W | %H:%M |',
+                format='| %a %d-%m-%y | week %W | %H:%M |',
                 foreground=foreground,
                 font=font,
                 ))

@@ -1,10 +1,5 @@
 [
     {
-        "name":"Lain Cyberia",
-        "alias":"la",
-        "url":"https://lainon.life/radio/cyberia.ogg"
-    },
-    {
         "name":"Darksynth Radio",
         "alias":"d",
         "url":"https://stream.nightride.fm/darksynth.m4a"
@@ -48,6 +43,10 @@
         "name":"Danger/u/ radio",
         "alias":"du",
         "url":"http://radio.dangeru.us:8000/stream.ogg"
+    },
+    {
+        "name":"Pulse Radio",
+        "alias":"pu",
+        "url":"https://str3.openstream.co/1365?aw_0_1st.collectionid%3D6036%26stationId%3D6036%26publisherId%3D1389%26k%3D1687193429"
     }
 ]
-

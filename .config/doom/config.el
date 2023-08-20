@@ -55,8 +55,13 @@
   (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
 
 (use-package sly
-  :init
-  (setq inferior-lisp-program "/usr/bin/sbcl"))
+  :config
+  (setq sly-lisp-implementations
+    `((sbcl ("/usr/bin/sbcl" "--noinform" "--no-linedit") :coding-system utf-8-unix))))
+
+(use-package sly-quicklisp :after sly)
+(use-package sly-asdf :after sly)
+(setq inferior-lisp-program "/usr/bin/sbcl")
 
 
 (map! :leader

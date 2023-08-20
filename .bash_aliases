@@ -27,3 +27,5 @@ alias :q='exit'
 alias q='exit'
 
 alias c='clear'
+
+alias hdmi='xrandr --auto --output eDP1 --left-of HDMI1'

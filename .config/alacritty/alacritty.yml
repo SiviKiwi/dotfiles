@@ -4,7 +4,7 @@ window:
 font:
   normal:
     family: monospace
-  size: 10.0
+  size: 20.0
 
 colors:
   # COLORSCHEME: darcula.yaml

@@ -1,14 +1,12 @@
 #
 # ~/.bash_profile
-#
 
-export DEVICE=LAPTOP
+export DEVICE=DESKTOP
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-	exec startx
-fi
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+
 
 # Autoscale therminal font
 export WINIT_X11_SCALE_FACTOR=1

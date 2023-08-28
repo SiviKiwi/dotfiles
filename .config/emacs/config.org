@@ -24,6 +24,7 @@
   - [[#display-line-numbers-and-truncated-lines][Display Line Numbers and Truncated Lines]]
 - [[#ivy-counsel][IVY (COUNSEL)]]
 - [[#language-support][LANGUAGE SUPPORT]]
+  - [[#python][Python]]
 - [[#modeline][MODELINE]]
 - [[#neotree][NEOTREE]]
 - [[#org-mode][ORG MODE]]
@@ -33,6 +34,7 @@
   - [[#diminish-org-indent-mode][Diminish Org Indent Mode]]
   - [[#org-level-headers][Org Level Headers]]
   - [[#source-code-block-tag-expansion][Source Code Block Tag Expansion]]
+- [[#pdf-tools][PDF-TOOLS]]
 - [[#projectile][PROJECTILE]]
 - [[#rainbow-mode][RAINBOW MODE]]
 - [[#shells-and-terminals][SHELLS AND TERMINALS]]
@@ -111,8 +113,7 @@ Emacs Dashboard is an extensible startup screen showing you recent files, bookma
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
   (setq dashboard-banner-logo-title "Emacs Is More Than A Text Editor!")
-  ;;(setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
-  (setq dashboard-startup-banner "/home/dt/.config/emacs/images/dtmacs-logo.png")  ;; use custom image as banner
+  (setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
   (setq dashboard-center-content nil) ;; set to 't' for centered content
   (setq dashboard-items '((recents . 5)
                           (agenda . 5 )
@@ -250,7 +251,7 @@ You can use the bindings CTRL plus =/- for zooming in/out.  You can also use CTR
 
   (dt/leader-keys
     "SPC" '(counsel-M-x :wk "Counsel M-x")
-    "." '(find-file :wk "Find file")
+    "f f" '(find-file :wk "Find file")
     "f c" '((lambda () (interactive) (find-file "~/.config/emacs/config.org")) :wk "Edit emacs config")
     "f r" '(counsel-recentf :wk "Find recent files")
     "TAB TAB" '(comment-line :wk "Comment lines"))
@@ -358,7 +359,7 @@ You can use the bindings CTRL plus =/- for zooming in/out.  You can also use CTR
   (dt/leader-keys
     "w" '(:ignore t :wk "Windows")
     ;; Window splits
-    "w c" '(evil-window-delete :wk "Close window")
+    "w q" '(evil-window-delete :wk "Close window")
     "w n" '(evil-window-new :wk "New window")
     "w s" '(evil-window-split :wk "Horizontal split window")
     "w v" '(evil-window-vsplit :wk "Vertical split window")
@@ -408,7 +409,9 @@ Let's make GNU Emacs look a little better.
   :bind
   ;; ivy-resume resumes the last Ivy-based completion.
   (("C-c C-r" . ivy-resume)
-   ("C-x B" . ivy-switch-buffer-other-window))
+   ("C-x B" . ivy-switch-buffer-other-window)
+   ("J" . ivy-next-line)
+   ("K" . ivy-previous-line))
   :diminish
   :custom
   (setq ivy-use-virtual-buffers t)
@@ -442,6 +445,21 @@ Emacs has built-in programming language modes for Lisp, Scheme, DSSSL, Ada, ASM,
 (use-package haskell-mode)
 (use-package lua-mode)
 
+
+#+end_src
+
+** Python
+
+#+begin_src emacs-lisp
+(require 'python)
+
+(use-package eval-in-repl
+  :config
+    (require 'eval-in-repl-python)
+    (setq eir-repl-placement 'below)
+  :hook (python-mode .
+          (lambda ()
+             (local-set-key (kbd "<C-return>") 'eir-eval-in-python))))
 #+end_src
 
 * MODELINE
@@ -550,6 +568,16 @@ Org-tempo is not a separate package but a module within org that can be enabled.
 
 #+begin_src emacs-lisp 
 (require 'org-tempo)
+#+end_src
+* PDF-TOOLS
+
+#+begin_src emacs-lisp
+(use-package pdf-tools
+  :load-path "site-lisp/pdf-tools/lisp"
+  :magic ("%PDF" . pdf-view-mode)
+  :config
+  (pdf-tools-install :no-query))
+
 #+end_src
 
 * PROJECTILE

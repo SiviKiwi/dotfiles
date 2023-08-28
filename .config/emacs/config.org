@@ -419,8 +419,18 @@ Let's make GNU Emacs look a little better.
   ;; ivy-resume resumes the last Ivy-based completion.
   (("C-c C-r" . ivy-resume)
    ("C-x B" . ivy-switch-buffer-other-window)
-   ("J" . ivy-next-line)
-   ("K" . ivy-previous-line))
+   :map ivy-minibuffer-map
+   ("TAB" . ivy-alt-done)
+   ("C-l" . ivy-alt-done)
+   ("C-j" . ivy-next-line)
+   ("C-k" . ivy-previous-line)
+   :map ivy-switch-buffer-map
+   ("C-k" . ivy-previous-line)
+   ("C-l" . ivy-done)
+   ("C-d" . ivy-switch-buffer-kill)
+   :map ivy-reverse-i-search-map
+   ("C-k" . ivy-previous-line)
+   ("C-d" . ivy-reverse-i-search-kill))  
   :diminish
   :custom
   (setq ivy-use-virtual-buffers t)
@@ -584,7 +594,9 @@ Org-tempo is not a separate package but a module within org that can be enabled.
 (use-package pdf-tools
   :load-path "site-lisp/pdf-tools/lisp"
   :magic ("%PDF" . pdf-view-mode)
-  :bind (("j" . pdf-view-next-line-or-next-page)
+  :bind (
+         :map pdf-view-mode-map
+         ("j" . pdf-view-next-line-or-next-page)
          ("k" . pdf-view-previous-line-or-previous-page))
   :hook (pdf-view . (display-line-number-mode nil))
   :config

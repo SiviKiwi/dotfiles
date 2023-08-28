@@ -392,6 +392,15 @@ Let's make GNU Emacs look a little better.
 #+begin_src emacs-lisp
 (global-display-line-numbers-mode 1)
 (global-visual-line-mode t)
+;; Disable line-number in some modes
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                shell-mode-hook
+                treemacs-mode-hook
+                eshell-mode-hook
+                pdf-view-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
 #+end_src
 
 * IVY (COUNSEL)
@@ -575,6 +584,9 @@ Org-tempo is not a separate package but a module within org that can be enabled.
 (use-package pdf-tools
   :load-path "site-lisp/pdf-tools/lisp"
   :magic ("%PDF" . pdf-view-mode)
+  :bind (("j" . pdf-view-next-line-or-next-page)
+         ("k" . pdf-view-previous-line-or-previous-page))
+  :hook (pdf-view . (display-line-number-mode nil))
   :config
   (pdf-tools-install :no-query))
 

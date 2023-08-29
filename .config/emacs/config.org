@@ -34,6 +34,7 @@
   - [[#diminish-org-indent-mode][Diminish Org Indent Mode]]
   - [[#org-level-headers][Org Level Headers]]
   - [[#source-code-block-tag-expansion][Source Code Block Tag Expansion]]
+  - [[#display-options][Display options]]
 - [[#pdf-tools][PDF-TOOLS]]
 - [[#projectile][PROJECTILE]]
 - [[#rainbow-mode][RAINBOW MODE]]
@@ -45,6 +46,7 @@
 - [[#theme][THEME]]
 - [[#transparency][TRANSPARENCY]]
 - [[#which-key][WHICH-KEY]]
+- [[#yasnippet][YASnippet]]
 
 * IMPORTANT PROGRAMS TO LOAD FIRST
 To keep this =config.org= a reasonable length, I have moved a lot of code to individual scripts that will be sourced by this config.  These scripts are found in "~/.config/emacs/scripts" and do not contain any code that most people are likely to need to edit.
@@ -253,8 +255,7 @@ You can use the bindings CTRL plus =/- for zooming in/out.  You can also use CTR
     "SPC" '(counsel-M-x :wk "Counsel M-x")
     "f f" '(find-file :wk "Find file")
     "f c" '((lambda () (interactive) (find-file "~/.config/emacs/config.org")) :wk "Edit emacs config")
-    "f r" '(counsel-recentf :wk "Find recent files")
-    "TAB TAB" '(comment-line :wk "Comment lines"))
+    "f r" '(counsel-recentf :wk "Find recent files"))
 
   (dt/leader-keys
     "b" '(:ignore t :wk "Bookmarks/Buffers")
@@ -588,8 +589,15 @@ Org-tempo is not a separate package but a module within org that can be enabled.
 #+begin_src emacs-lisp 
 (require 'org-tempo)
 #+end_src
-* PDF-TOOLS
 
+** Display options
+#+begin_src emacs-lisp
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.5))
+(setq org-pretty-entities t)
+
+#+end_src
+
+* PDF-TOOLS 
 #+begin_src emacs-lisp
 (use-package pdf-tools
   :load-path "site-lisp/pdf-tools/lisp"
@@ -748,3 +756,20 @@ With Emacs version 29, true transparency has been added.  I have turned transpar
 	  which-key-separator " → " ))
 #+end_src
 
+* YASnippet
+
+#+begin_src emacs-lisp
+
+(use-package yasnippet
+  :ensure t
+  :hook ((text-mode
+          prog-mode
+          conf-mode
+          snippet-mode) . yas-minor-mode-on)
+  :bind
+  (:map yas-minor-mode-map
+   ("TAB" . yas-expand))
+  :init
+  (setq yas-snippet-dir "~/.config/emacs/snippets"))
+
+#+end_src

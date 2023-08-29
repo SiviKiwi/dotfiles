@@ -1,7 +1,7 @@
 #
 # ~/.bash_profile
 
-export DEVICE=LAPTOP
+export DEVICE=DESKTOP
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 

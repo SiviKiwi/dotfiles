@@ -24,6 +24,7 @@
   - [[#display-line-numbers-and-truncated-lines][Display Line Numbers and Truncated Lines]]
 - [[#ivy-counsel][IVY (COUNSEL)]]
 - [[#language-support][LANGUAGE SUPPORT]]
+  - [[#nynorsk-3][Nynorsk <3]]
   - [[#python][Python]]
 - [[#modeline][MODELINE]]
 - [[#neotree][NEOTREE]]
@@ -468,6 +469,9 @@ Emacs has built-in programming language modes for Lisp, Scheme, DSSSL, Ada, ASM,
 
 #+end_src
 
+** Nynorsk <3
+TODO: Lag funksjon for å slå opp på ordbøkene.no api. Bruk (current-word t t) for å finne ord under pil
+
 ** Python
 
 #+begin_src emacs-lisp
@@ -480,6 +484,11 @@ Emacs has built-in programming language modes for Lisp, Scheme, DSSSL, Ada, ASM,
   :hook (python-mode .
           (lambda ()
              (local-set-key (kbd "<C-return>") 'eir-eval-in-python))))
+
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))
 #+end_src
 
 * MODELINE
@@ -592,7 +601,7 @@ Org-tempo is not a separate package but a module within org that can be enabled.
 
 ** Display options
 #+begin_src emacs-lisp
-(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.5))
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
 (setq org-pretty-entities t)
 
 #+end_src
@@ -767,8 +776,8 @@ With Emacs version 29, true transparency has been added.  I have turned transpar
           conf-mode
           snippet-mode) . yas-minor-mode-on)
   :bind
-  (:map yas-minor-mode-map
-   ("TAB" . yas-expand))
+  ;;(:map yas-minor-mode-map
+  ;; ("TAB" . yas-expand))
   :init
   (setq yas-snippet-dir "~/.config/emacs/snippets"))
 

@@ -36,6 +36,7 @@
   - [[#org-level-headers][Org Level Headers]]
   - [[#source-code-block-tag-expansion][Source Code Block Tag Expansion]]
   - [[#display-options][Display options]]
+  - [[#babel][babel]]
 - [[#pdf-tools][PDF-TOOLS]]
 - [[#projectile][PROJECTILE]]
 - [[#rainbow-mode][RAINBOW MODE]]
@@ -486,9 +487,6 @@ TODO: Lag funksjon for å slå opp på ordbøkene.no api. Bruk (current-word t t
              (local-set-key (kbd "<C-return>") 'eir-eval-in-python))))
 
 
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((python . t)))
 #+end_src
 
 * MODELINE
@@ -603,6 +601,15 @@ Org-tempo is not a separate package but a module within org that can be enabled.
 #+begin_src emacs-lisp
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
 (setq org-pretty-entities t)
+
+#+end_src
+
+** babel
+#+begin_src emacs-lisp
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)
+   (latex . t)))
 
 #+end_src
 

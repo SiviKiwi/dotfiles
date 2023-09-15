@@ -37,6 +37,7 @@
   - [[#source-code-block-tag-expansion][Source Code Block Tag Expansion]]
   - [[#display-options][Display options]]
   - [[#babel][babel]]
+- [[#other][Other]]
 - [[#pdf-tools][PDF-TOOLS]]
 - [[#projectile][PROJECTILE]]
 - [[#rainbow-mode][RAINBOW MODE]]
@@ -610,6 +611,12 @@ Org-tempo is not a separate package but a module within org that can be enabled.
  'org-babel-load-languages
  '((python . t)
    (latex . t)))
+
+#+end_src
+
+* Other
+#+begin_src emacs-lisp
+(global-auto-revert-mode t)
 
 #+end_src
 

@@ -36,7 +36,7 @@
   - [[#org-level-headers][Org Level Headers]]
   - [[#source-code-block-tag-expansion][Source Code Block Tag Expansion]]
   - [[#display-options][Display options]]
-  - [[#babel][babel]]
+  - [[#babel][Babel]]
 - [[#other][Other]]
 - [[#pdf-tools][PDF-TOOLS]]
 - [[#projectile][PROJECTILE]]
@@ -603,15 +603,21 @@ Org-tempo is not a separate package but a module within org that can be enabled.
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
 (setq org-pretty-entities t)
 
+(setq org-latex-listings t)
+(add-to-list 'org-latex-packages-alist '("" "listings"))
+(add-to-list 'org-latex-packages-alist '("" "xcolor"))
 #+end_src
 
-** babel
+** Babel
 #+begin_src emacs-lisp
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)
-   (latex . t)))
+   (latex . t)
+   (octave . t)
+   (gnuplot . t)))
 
+(setq org-confirm-babel-evaluate nil)
 #+end_src
 
 * Other

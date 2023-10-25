@@ -509,6 +509,7 @@ TODO: Lag funksjon for å slå opp på ordbøkene.no api. Bruk (current-word t t
           web-mode        ; ts-ls/HTML/CSS
           ) . lsp-deferred)
   :commands lsp
+  :bind-keymap ("C-l" . lsp-command-map)
   :config
   (setq lsp-auto-guess-root t)
   (setq lsp-log-io nil)
@@ -526,7 +527,8 @@ TODO: Lag funksjon for å slå opp på ordbøkene.no api. Bruk (current-word t t
   (setq lsp-enable-imenu nil)
   (setq lsp-enable-snippet nil)
   (setq read-process-output-max (* 1024 1024)) ;; 1MB
-  (setq lsp-idle-delay 0.5))
+  (setq lsp-idle-delay 0.5)
+  (lsp-enable-which-key-integration))
 
 (use-package lsp-ui
   :commands lsp-ui-mode

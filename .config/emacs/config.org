@@ -26,6 +26,7 @@
 - [[#language-support][LANGUAGE SUPPORT]]
   - [[#nynorsk-3][Nynorsk <3]]
   - [[#python][Python]]
+- [[#lsp][LSP]]
 - [[#modeline][MODELINE]]
 - [[#neotree][NEOTREE]]
 - [[#org-mode][ORG MODE]]
@@ -93,13 +94,13 @@ By default, Emacs creates automatic backups of files in their original directori
 (use-package company
   :defer 2
   :diminish
+  :hook (after-init-hook . global-company-mode)
   :custom
   (company-begin-commands '(self-insert-command))
   (company-idle-delay .1)
   (company-minimum-prefix-length 2)
   (company-show-numbers t)
-  (company-tooltip-align-annotations 't)
-  (global-company-mode t))
+  (company-tooltip-align-annotations 't))
 
 (use-package company-box
   :after company
@@ -468,6 +469,7 @@ Emacs has built-in programming language modes for Lisp, Scheme, DSSSL, Ada, ASM,
 (use-package haskell-mode)
 (use-package lua-mode)
 (use-package gnuplot) 
+(use-package typescript-mode)
 
 
 #+end_src
@@ -488,6 +490,58 @@ TODO: Lag funksjon for å slå opp på ordbøkene.no api. Bruk (current-word t t
           (lambda ()
              (local-set-key (kbd "<C-return>") 'eir-eval-in-python))))
 
+
+#+end_src
+
+* LSP
+
+#+begin_src emacs-lisp
+
+(use-package lsp-mode
+  :hook ((c-mode          ; clangd
+          c++-mode        ; clangd
+          c-or-c++-mode   ; clangd
+          java-mode       ; eclipse-jdtls
+          js-mode         ; ts-ls (tsserver wrapper)
+          js-jsx-mode     ; ts-ls (tsserver wrapper)
+          typescript-mode ; ts-ls (tsserver wrapper)
+          python-mode     ; pyright
+          web-mode        ; ts-ls/HTML/CSS
+          ) . lsp-deferred)
+  :commands lsp
+  :config
+  (setq lsp-auto-guess-root t)
+  (setq lsp-log-io nil)
+  (setq lsp-restart 'auto-restart)
+  (setq lsp-enable-symbol-highlighting nil)
+  (setq lsp-enable-on-type-formatting nil)
+  (setq lsp-signature-auto-activate nil)
+  (setq lsp-signature-render-documentation nil)
+  (setq lsp-eldoc-hook nil)
+  (setq lsp-modeline-code-actions-enable nil)
+  (setq lsp-modeline-diagnostics-enable nil)
+  (setq lsp-headerline-breadcrumb-enable nil)
+  (setq lsp-semantic-tokens-enable nil)
+  (setq lsp-enable-folding nil)
+  (setq lsp-enable-imenu nil)
+  (setq lsp-enable-snippet nil)
+  (setq read-process-output-max (* 1024 1024)) ;; 1MB
+  (setq lsp-idle-delay 0.5))
+
+(use-package lsp-ui
+  :commands lsp-ui-mode
+  :config
+  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-doc-header t)
+  (setq lsp-ui-doc-include-signature t)
+  (setq lsp-ui-doc-border (face-foreground 'default))
+  (setq lsp-ui-sideline-show-code-actions t)
+  (setq lsp-ui-sideline-delay 0.05))
+
+(use-package lsp-pyright
+  :hook (python-mode . (lambda () (require 'lsp-pyright)))
+  :init (when (executable-find "python3")
+          (setq lsp-pyright-python-executable-cmd "python3")))
 
 #+end_src
 
@@ -621,6 +675,15 @@ Org-tempo is not a separate package but a module within org that can be enabled.
 (setq org-confirm-babel-evaluate nil)
 #+end_src
 
+#+begin_src emacs-lisp
+(add-to-list 'org-src-lang-modes '("inline-js" . javascript)) ;; js2 if you're fancy
+(defvar org-babel-default-header-args:inline-js
+  '((:results . "html")
+    (:exports . "results")))
+(defun org-babel-execute:inline-js (body _params)
+  (format "<script type=\"text/javascript\">\n%s\n</script>" body))
+
+#+end_src
 * Other
 #+begin_src emacs-lisp
 (global-auto-revert-mode t)

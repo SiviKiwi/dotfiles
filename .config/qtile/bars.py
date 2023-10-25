@@ -22,14 +22,14 @@ def bashtop():
 
 widgets = []
 widgets.append(widget.GroupBox(
-                highlight_method='text',
+                highlight_method='line',
                 disable_drag=True,
                 use_mouse_wheel=False,
                 this_current_screen_border=border,
-                this_screen_border=border,
+                this_screen_border=foreground,
                 foreground=foreground,
                 active=foreground,
-                inactive=foreground,
+                inactive=colors['GRAY'],
                 font=font,
                 ))
 widgets.append(widget.Prompt(

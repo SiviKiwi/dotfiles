@@ -470,6 +470,11 @@ Emacs has built-in programming language modes for Lisp, Scheme, DSSSL, Ada, ASM,
 (use-package lua-mode)
 (use-package gnuplot) 
 (use-package typescript-mode)
+(use-package platformio-mode
+  :hook (c++-mode . 
+          (lambda()
+            (lsp-deffered)
+            (platformio-conditionally-enable))))
 
 
 #+end_src

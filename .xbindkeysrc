@@ -82,30 +82,6 @@
    XF86AudioMute
 #    Mod4+Delete
 
-# Type ø
-"xdotool key --clearmodifiers U00F8"
-   Release+Alt+semicolon
-
-# Type capital ø
-"xdotool key --clearmodifiers U00D8"
-    Release+Shift+Alt+semicolon
-
-# Type æ
-"xdotool key --clearmodifiers U00E6"
-   Release+Alt+apostrophe
-
-# Type capital æ
-"xdotool key --clearmodifiers U00C6"
-    Release+Shift+Alt+apostrophe
-
-# Type å
-"xdotool key --clearmodifiers U00E5"
-   Release+Alt+bracketleft
-
-# Type capital å
-"xdotool key --clearmodifiers U00C5"
-    Release+Shift+Alt+bracketleft
-
 # Take screenshot
 "maim -s $HOME/Bilete/Skjermdump/$(date +"%Y-%m-%d_%T.png")"
     Print

@@ -30,11 +30,11 @@ def open_browser(q):
     def open_link(user_input):
         regexp = re.compile(r'(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-&?=%.]+')
         if regexp.search(user_input):
-            q.cmd_spawn(f'{BROWSER} --new-window {user_input}')
+            q.spawn(f'{BROWSER} --new-window {user_input}')
         elif len(user_input) > 0:
-            q.cmd_spawn(f'{BROWSER} --new-window duckduckgo.com/?q={"+".join(user_input.split(" "))}')
+            q.spawn(f'{BROWSER} --new-window duckduckgo.com/?q={"+".join(user_input.split(" "))}')
         else:
-            q.cmd_spawn(f'{BROWSER} --new-window')
+            q.spawn(f'{BROWSER} --new-window')
 
 
     widgets = q.current_screen.top.widgets
@@ -42,7 +42,7 @@ def open_browser(q):
     prompt.start_input(BROWSER, open_link, allow_empty_input=True)
 
 def open_mpv(q):
-    q.cmd_spawn('/home/sivert/.bin/open_mpv.sh')
+    q.spawn('/home/sivert/.bin/open_mpv.sh')
 
 
 mod = 'mod4'

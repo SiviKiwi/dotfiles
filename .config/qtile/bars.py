@@ -40,7 +40,7 @@ widgets.append(widget.Spacer(
                 lenght=bar.STRETCH
                 ))
 widgets.append(MPVNowPlaying(
-                socket_path='/tmp/empv-socket',
+                socket_path='/tmp/mpv-socket',
                 update_interval=5,
                 foreground=foreground,
                 font=font,

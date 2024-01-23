@@ -29,3 +29,5 @@ alias q='exit'
 alias c='clear'
 
 alias hdmi='xrandr --auto --output eDP1 --left-of HDMI1'
+
+alias sxmo='ssh user@172.16.42.1'

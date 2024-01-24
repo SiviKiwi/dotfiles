@@ -1,0 +1,88 @@
+#+TITLE: Sivert's heilage emacs konfig
+#+AUTHOR: Sivert
+
+** Rimelege standardinnstillingar
+#+begin_src emacs-lisp
+  (load "~/.config/emacs/sanemacs.el" nil t)
+#+end_src
+
+** Utsjånad
+#+begin_src emacs-lisp
+  (set-face-attribute 'default nil :height 200)
+
+  (use-package diminish)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package tron-legacy-theme
+  :config
+  (load-theme 'tron-legacy t))
+#+end_src
+
+** Forbetring av livskvalitet
+
+#+begin_src emacs-lisp
+  (use-package which-key
+    :config
+    (which-key-mode))
+#+end_src
+
+*** IVY (Counsel)
+#+begin_src emacs-lisp
+  (use-package counsel
+    :after ivy
+    :diminish
+    :config (counsel-mode))
+
+  (use-package ivy
+    :diminish
+    :custom
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-count-format "(%d/%d) ")
+    (setq enable-recursive-minibuffers t)
+    :config
+    (ivy-mode))
+
+
+#+end_src
+
+
+** Programmering
+
+*** C/C++
+#+begin_src emacs-lisp
+(use-package platformio-mode
+  :hook (c-mode .
+          (lambda()
+            (platformio-conditionally-enable))))
+#+end_src
+
+
+** Org-mode, elsklingen min
+#+begin_src emacs-lisp
+  (use-package toc-org
+    :commands toc-org-enable
+    :init
+    (add-hook 'org-mode-hook 'toc-org-enable)
+    (add-hook 'org-mode-hook 'org-indent-mode))
+
+  (eval-after-load 'org-indent '(diminish 'org-indent-mode))
+
+  (require 'org-tempo)
+
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
+  (setq org-pretty-entities t)
+
+  (setq org-latex-listings t)
+  (add-to-list 'org-latex-packages-alist '("" "listings"))
+  (add-to-list 'org-latex-packages-alist '("" "xcolor"))
+#+end_src
+
+
+** Projectile
+#+begin_src emacs-lisp
+  (use-package projectile
+    :config
+    (projectile-mode +1)
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+#+end_src

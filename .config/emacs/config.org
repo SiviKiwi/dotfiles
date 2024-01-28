@@ -8,7 +8,7 @@
 
 ** Utsjånad
 #+begin_src emacs-lisp
-  (set-face-attribute 'default nil :height 200)
+  (set-face-attribute 'default nil :font "Jetbrains mono" :height 200)
 
   (use-package diminish)
 #+end_src
@@ -49,6 +49,16 @@
 
 ** Programmering
 
+#+begin_src emacs-lisp
+  (use-package eglot
+    :hook (prog-mode . eglot-ensure))
+
+  (use-package eldoc
+    :init
+    (global-eldoc-mode))
+
+#+end_src
+
 *** C/C++
 #+begin_src emacs-lisp
 (use-package platformio-mode
@@ -73,8 +83,13 @@
   (setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
   (setq org-pretty-entities t)
 
-  (setq org-latex-listings t)
-  (add-to-list 'org-latex-packages-alist '("" "listings"))
+  (add-to-list 'org-latex-packages-alist '("" "minted" nil))
+  (setq org-latex-src-block-backend 'minted)
+
+  (setq org-latex-pdf-process
+    '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+      "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
   (add-to-list 'org-latex-packages-alist '("" "xcolor"))
 #+end_src
 

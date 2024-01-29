@@ -1,12 +1,12 @@
 #+TITLE: Sivert's heilage emacs konfig
 #+AUTHOR: Sivert
 
-** Rimelege standardinnstillingar
+* Rimelege standardinnstillingar
 #+begin_src emacs-lisp
   (load "~/.config/emacs/sanemacs.el" nil t)
 #+end_src
 
-** Utsjånad
+* Utsjånad
 #+begin_src emacs-lisp
   (set-face-attribute 'default nil :font "Jetbrains mono" :height 200)
 
@@ -19,7 +19,7 @@
   (load-theme 'tron-legacy t))
 #+end_src
 
-** Forbetring av livskvalitet
+* Forbetring av livskvalitet
 
 #+begin_src emacs-lisp
   (use-package which-key
@@ -47,7 +47,7 @@
 #+end_src
 
 
-** Programmering
+* Programmering
 
 #+begin_src emacs-lisp
   (use-package eglot
@@ -59,7 +59,7 @@
 
 #+end_src
 
-*** C/C++
+** C/C++
 #+begin_src emacs-lisp
 (use-package platformio-mode
   :hook (c-mode .
@@ -67,8 +67,19 @@
             (platformio-conditionally-enable))))
 #+end_src
 
+** Racket
+#+begin_src emacs-lisp
+  (use-package racket-mode)
 
-** Org-mode, elsklingen min
+#+end_src
+
+*** Babel
+#+begin_src emacs-lisp
+  (use-package ob-racket
+    :load-path "~/.config/emacs/ob_racket")
+#+end_src
+
+* Org-mode, elsklingen min
 #+begin_src emacs-lisp
   (use-package toc-org
     :commands toc-org-enable
@@ -91,13 +102,33 @@
       "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
   (add-to-list 'org-latex-packages-alist '("" "xcolor"))
+
+
+
+#+end_src
+** babel
+#+begin_src emacs-lisp
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((C . t)
+     (python . t)
+     (racket . t)))
+
+
 #+end_src
 
-
-** Projectile
+* Projectile
 #+begin_src emacs-lisp
   (use-package projectile
     :config
     (projectile-mode +1)
     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+#+end_src
+* Radio
+#+begin_src emacs-lisp
+  (use-package emms
+    :config
+    (if (executable-find "mpv")
+      (setq emms-player-list '(emms-player-mpv))
+      (emms-default-players)))
 #+end_src

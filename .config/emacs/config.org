@@ -1,33 +1,131 @@
 #+TITLE: Sivert's heilage emacs konfig
 #+AUTHOR: Sivert
 
-* Rimelege standardinnstillingar
+* Ytelse
 #+begin_src emacs-lisp
-  (load "~/.config/emacs/sanemacs.el" nil t)
+  (setq gc-cons-threshold 100000000)
+  (setq read-process-output-max (* 1024 1024)) ;; 1mb
+
+
+  (add-hook 'after-init-hook #'(lambda ()
+                                 ;; restore after startup
+                                 (setq gc-cons-threshold 800000)))
+
+#+end_src
+
+* Handering av pakkar
+#+begin_src emacs-lisp
+  (require 'package)
+  (setq package-enable-at-startup nil)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (unless package--initialized (package-initialize))
+
+  ;;; Setup use-package
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+  (eval-when-compile
+    (require 'use-package))
+  (setq use-package-always-ensure t)
+
 #+end_src
 
 * Utsjånad
 #+begin_src emacs-lisp
-  (set-face-attribute 'default nil :font "Jetbrains mono" :height 200)
+  (if (fboundp 'menu-bar-mode)
+      (menu-bar-mode -1))
+  (if (fboundp 'tool-bar-mode)
+      (tool-bar-mode -1))
+  (if (fboundp 'scroll-bar-mode)
+      (scroll-bar-mode -1))
 
-  (use-package diminish)
+  (setq-default cursor-type 'bar)
+
+  (setq initial-scratch-message "")
+  (setq-default frame-title-format '("%b"))
+  (setq linum-format "%4d ")
+
+  (use-package undo-tree
+    :init (global-undo-tree-mode)
+    :config (setq-default undo-tree-auto-save-history nil))
+  (add-hook 'before-save-hook
+            'delete-trailing-whitespace)
+
+
+
+
 #+end_src
 
+** Tema
 #+begin_src emacs-lisp
-(use-package tron-legacy-theme
-  :config
-  (load-theme 'tron-legacy t))
+  (set-face-attribute 'default nil :font "Jetbrains mono" :height 200)
+
+  (use-package tron-legacy-theme
+    :config
+    (load-theme 'tron-legacy t))
 #+end_src
 
 * Forbetring av livskvalitet
 
 #+begin_src emacs-lisp
+  (use-package diminish)
+
+  (setq ring-bell-function 'ignore)
+  (fset 'yes-or-no-p 'y-or-n-p)
+  (show-paren-mode 1)
+  (delete-selection-mode 1)
+  (setq linum-format "%4d ")
+
   (use-package which-key
-    :config
-    (which-key-mode))
+      :diminish
+      :config
+      (which-key-mode))
 #+end_src
 
-*** IVY (Counsel)
+#+begin_src emacs-lisp
+  (use-package ace-window
+    :bind ("M-o" . ace-window))
+#+end_src
+
+#+begin_src emacs-lisp
+  (use-package workgroups2
+    :config
+    (workgroups-mode 1))
+
+#+end_src
+** Forhindre rot i filer
+#+begin_src emacs-lisp
+  ;;; Offload the custom-set-variables to a separate file
+  ;;; This keeps your init.el neater and you have the option
+  ;;; to gitignore your custom.el if you see fit.
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (unless (file-exists-p custom-file)
+    (write-region "" nil custom-file))
+  ;;; Load custom file. Don't hide errors. Hide success message
+  (load custom-file nil t)
+
+  ;;; Put Emacs auto-save and backup files to /tmp/ or C:/Temp/
+  (defconst emacs-tmp-dir (expand-file-name (format "emacs%d" (user-uid)) temporary-file-directory))
+  (setq
+   backup-by-copying t                                        ; Avoid symlinks
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t
+   auto-save-list-file-prefix emacs-tmp-dir
+   auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t))  ; Change autosave dir to tmp
+   backup-directory-alist `((".*" . ,emacs-tmp-dir)))
+
+  ;;; Lockfiles unfortunately cause more pain than benefit
+  (setq create-lockfiles nil)
+
+  ;;; Load wheatgrass as the default theme if one is not loaded already
+
+  (if (not custom-enabled-themes)
+      (load-theme 'wheatgrass t))
+#+end_src
+
+* IVY (Counsel)
 #+begin_src emacs-lisp
   (use-package counsel
     :after ivy
@@ -112,14 +210,26 @@
    'org-babel-load-languages
    '((C . t)
      (python . t)
-     (racket . t)))
+     (racket . t)
+     (octave . t)))
 
+  ; Ikkje spør før evaluering
+  (setq org-confirm-babel-evaluate nil)
 
+#+end_src
+
+* PDF
+#+begin_src emacs-lisp
+  (use-package pdf-tools
+    :magic ("%PDF" . pdf-view-mode)
+    :config
+    (pdf-tools-install :no-query))
 #+end_src
 
 * Projectile
 #+begin_src emacs-lisp
   (use-package projectile
+    :diminish
     :config
     (projectile-mode +1)
     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))

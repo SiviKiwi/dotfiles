@@ -31,7 +31,7 @@ class MPVNowPlaying(base.InLoopPollText):
                 response_json = ""
 
             if "data" in response_json:
-                song = re.sub(r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}", "", response_json["data"]) + '|'
+                song = re.sub(r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}", "", response_json["data"]) + ' |'
                 if song != self.__prev_song:
                     currently_playing_song = song
                     self.__prev_song = song

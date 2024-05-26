@@ -28,6 +28,8 @@
     (require 'use-package))
   (setq use-package-always-ensure t)
 
+  (use-package diminish)
+
 #+end_src
 
 * Utsjånad
@@ -46,30 +48,22 @@
   (setq linum-format "%4d ")
 
   (use-package undo-tree
+    :diminish
     :init (global-undo-tree-mode)
     :config (setq-default undo-tree-auto-save-history nil))
   (add-hook 'before-save-hook
             'delete-trailing-whitespace)
-
-
-
-
 #+end_src
 
 ** Tema
 #+begin_src emacs-lisp
   (set-face-attribute 'default nil :font "Jetbrains mono" :height 200)
-
-  (use-package tron-legacy-theme
-    :config
-    (load-theme 'tron-legacy t))
+  (load-theme 'adwaita t)
 #+end_src
 
 * Forbetring av livskvalitet
 
 #+begin_src emacs-lisp
-  (use-package diminish)
-
   (setq ring-bell-function 'ignore)
   (fset 'yes-or-no-p 'y-or-n-p)
   (show-paren-mode 1)
@@ -148,12 +142,27 @@
 * Programmering
 
 #+begin_src emacs-lisp
-  (use-package eglot
-    :hook (prog-mode . eglot-ensure))
-
   (use-package eldoc
     :init
     (global-eldoc-mode))
+
+  (use-package eglot
+    :hook (prog-mode . eglot-ensure)
+    :init
+    (setq eglot-stay-out-of '(flymake))
+    :bind (:map
+           eglot-mode-map
+           ("C-c c a" . eglot-code-actions)
+           ("C-c c o" . eglot-code-actions-organize-imports)
+           ("C-c c r" . eglot-rename)
+           ("C-c c f" . eglot-format)))
+
+  (use-package flymake
+    :hook (prog-mode . flymake-mode)
+    :bind (:map flymake-mode-map
+                ("C-c ! n" . flymake-goto-next-error)
+                ("C-c ! p" . flymake-goto-prev-error)
+                ("C-c ! l" . flymake-show-buffer-diagnostics)))
 
 #+end_src
 
@@ -179,6 +188,8 @@
 
 * Org-mode, elsklingen min
 #+begin_src emacs-lisp
+  (add-hook 'org-mode-hook (lambda() (electric-indent-local-mode -1)))
+
   (use-package toc-org
     :commands toc-org-enable
     :init
@@ -196,8 +207,8 @@
   (setq org-latex-src-block-backend 'minted)
 
   (setq org-latex-pdf-process
-    '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-      "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+        '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
   (add-to-list 'org-latex-packages-alist '("" "xcolor"))
 

@@ -62,7 +62,7 @@ else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
-source /usr/share/git/completion/git-prompt.sh 
+source /usr/share/git/completion/git-prompt.sh
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -135,8 +135,25 @@ export PATH="~/.emacs.d/bin:$PATH"
 # Add enviroment variable for tlmgr
 export TEXMFDIST=/usr/share/texmf-dist
 
-# Use vim keys in terminal
-set -o vi
-
 # Autoscale therminal font
 export WINIT_X11_SCALE_FACTOR=1
+
+#if [ "$TERM" = "linux" ]; then
+#    echo -en "\e]P0081801" #black
+#    echo -en "\e]P80e3102" #darkgrey
+#    echo -en "\e]P167fe81" #darkred
+#    echo -en "\e]P980ff9a" #red
+#    echo -en "\e]P24efe66" #darkgreen
+#    echo -en "\e]PA35fd49" #green
+#    echo -en "\e]P31cfc2a" #brown
+#    echo -en "\e]PB04fb0a" #yellow
+#    echo -en "\e]P40ec704" #darkblue
+#    echo -en "\e]PC07e104" #blue
+#    echo -en "\e]P5169504" #darkmagenta
+#    echo -en "\e]PD13ae04" #magenta
+#    echo -en "\e]P6166203" #darkcyan
+#    echo -en "\e]PE177b04" #cyan
+#    echo -en "\e]P7134903" #lightgrey
+#    echo -en "\e]PF99ffb2" #white
+#    clear #for background artifacting
+#fi

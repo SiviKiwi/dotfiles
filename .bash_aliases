@@ -2,7 +2,7 @@
 alias radio='$HOME/.bin/radio.sh'
 
 # neofetch alias
-alias neofetch="clear && neofetch"
+alias neofetch="clear && neofetch "
 
 # Git dotfiles command
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -31,3 +31,4 @@ alias c='clear'
 alias hdmi='xrandr --auto --output eDP1 --left-of HDMI1'
 
 alias sxmo='ssh user@172.16.42.1'
+alias verksted="ssh verksted@10.53.50.47"

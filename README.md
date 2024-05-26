@@ -5,3 +5,7 @@ echo ".dotfiles" >> .gitignore
 
 
 git clone --bare <git-repo-url> $HOME/.dotfiles
+
+
+config checkout
+

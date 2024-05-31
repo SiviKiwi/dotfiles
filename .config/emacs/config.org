@@ -57,8 +57,8 @@
 
 ** Tema
 #+begin_src emacs-lisp
-  (set-face-attribute 'default nil :font "Jetbrains mono" :height 200)
-  (load-theme 'adwaita t)
+  (set-face-attribute 'default nil :font "Jetbrains mono" :height 160)
+  (load-theme 'modus-operandi)
 #+end_src
 
 * Forbetring av livskvalitet
@@ -149,7 +149,7 @@
   (use-package eglot
     :hook (prog-mode . eglot-ensure)
     :init
-    (setq eglot-stay-out-of '(flymake))
+    (setq eglot-stay-out-of '(nflymake))
     :bind (:map
            eglot-mode-map
            ("C-c c a" . eglot-code-actions)
@@ -172,18 +172,6 @@
   :hook (c-mode .
           (lambda()
             (platformio-conditionally-enable))))
-#+end_src
-
-** Racket
-#+begin_src emacs-lisp
-  (use-package racket-mode)
-
-#+end_src
-
-*** Babel
-#+begin_src emacs-lisp
-  (use-package ob-racket
-    :load-path "~/.config/emacs/ob_racket")
 #+end_src
 
 * Org-mode, elsklingen min
@@ -221,7 +209,6 @@
    'org-babel-load-languages
    '((C . t)
      (python . t)
-     (racket . t)
      (octave . t)))
 
   ; Ikkje spør før evaluering
@@ -229,7 +216,14 @@
 
 #+end_src
 
-* PDF
+* Dokument
+** EPUB
+#+begin_src emacs-lisp
+  (use-package nov
+    :mode ("\\.epub\\'" . nov-mode))
+
+#+end_src
+** PDF
 #+begin_src emacs-lisp
   (use-package pdf-tools
     :magic ("%PDF" . pdf-view-mode)

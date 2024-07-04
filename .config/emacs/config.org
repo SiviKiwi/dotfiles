@@ -78,7 +78,8 @@
 
 #+begin_src emacs-lisp
   (use-package ace-window
-    :bind ("M-o" . ace-window))
+    :bind ("M-o" . ace-window)
+          ("M-O" . ace-swap-window))
 #+end_src
 
 #+begin_src emacs-lisp
@@ -86,6 +87,11 @@
     :config
     (workgroups-mode 1))
 
+#+end_src
+
+** Åpne filar som administrator
+#+begin_src emacs-lisp
+(use-package sudo-edit)
 #+end_src
 ** Forhindre rot i filer
 #+begin_src emacs-lisp

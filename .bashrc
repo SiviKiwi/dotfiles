@@ -127,7 +127,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # Set editor variable
-export EDITOR="/usr/bin/nvim"
+export EDITOR="/usr/bin/emacsclient -r"
 
 
 export PATH="~/.emacs.d/bin:$PATH"
